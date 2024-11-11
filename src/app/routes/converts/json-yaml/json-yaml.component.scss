@@ -8,11 +8,16 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  width: 100%; // Ensure the field takes full width
 }
 
 .auto-height {
   flex: 1;
   resize: none;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  width: 100%; // Ensure the textarea takes full width
 }
 
 .center-placeholder {
@@ -23,62 +28,36 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%; // Ensure the form field takes full width
 }
 
 ::ng-deep .mat-mdc-text-field-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
+  width: 100%; // Ensure the wrapper takes full width
 }
 
 ::ng-deep .mat-mdc-form-field-flex {
   flex: 1;
   display: flex;
   flex-direction: column;
+  width: 100%; // Ensure the flex container takes full width
 }
 
 ::ng-deep .mat-mdc-form-field-infix {
   flex: 1;
   display: flex;
   flex-direction: column;
+  width: 100% !important; // Force full width
 }
 
 ::ng-deep .mat-mdc-form-field-infix textarea {
   height: 100% !important;
+  width: 100% !important; // Force full width
   padding: 16px !important; // Add some padding
-}
-
-::ng-deep .mat-mdc-form-field-infix textarea::placeholder {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  width: calc(100% - 32px); // Adjust for padding
-}
-
-::ng-deep .mat-mdc-form-field.mat-focused .mat-mdc-form-field-infix textarea::placeholder {
-  color: transparent;
-}
-
-::ng-deep textarea.cdk-textarea-autosize {
-  min-height: 100% !important;
-}
-
-
-
-
-.error-message-container {
-  margin-top: 16px;
-  min-height: 24px; // Provides space for the error message
-}
-
-.error-message {
-  color: #f44336; // Red color for error messages
-  font-size: 14px;
-  margin: 0;
-  padding: 4px 8px;
-  background-color: #ffebee; // Light red background
-  border-radius: 4px;
-  border: 1px solid #ffcdd2; // Slight border for emphasis
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: auto;
 }
