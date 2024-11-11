@@ -1,3 +1,56 @@
+.format-selection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.arrow {
+  margin: 0 15px;
+  font-size: 24px;
+}
+
+.textarea-container {
+  display: flex;
+  gap: 20px;
+  height: calc(100vh - 200px); // Adjust this value based on your layout
+}
+
+.textarea-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%; // Ensure the field takes full width
+}
+
+.auto-height {
+  flex: 1;
+  resize: none;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  width: 100%; // Ensure the textarea takes full width
+}
+
+.center-placeholder {
+  text-align: left; // Changed to left alignment for actual text
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
 .textarea-container {
   display: flex;
   gap: 20px;

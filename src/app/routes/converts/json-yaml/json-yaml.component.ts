@@ -4,7 +4,13 @@ import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatGridList, MatGridTile, MatGridTileText } from '@angular/material/grid-list';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
+import * as yaml from 'js-yaml';
 import * as convert from 'xml-js';
+import { MatButtonToggle, MatButtonToggleGroup } from '@angular/material/button-toggle';
+import { NgIf } from '@angular/common';
+
+type FormatType = 'JSON' | 'YAML' | 'XML';
+
 
 @Component({
   selector: 'app-converts-json-yaml',
@@ -21,32 +27,73 @@ import * as convert from 'xml-js';
     MatGridTileText,
     MatFormField,
     MatInput,
+    MatButtonToggleGroup,
+    MatButtonToggle,
+    NgIf,
   ],
 })
 export class ConvertsJsonYamlComponent {
-  inputArea = '';
-  outputArea = '';
+  inputText: string = '';
+  outputText: string = '';
+  errorMessage: string = '';
+  selectedInputType: FormatType = 'JSON';
+  selectedOutputType: FormatType = 'YAML';
 
-  onJsonInputChange(event: Event) {
+  onInputChange(event: Event) {
     const target = event.target as HTMLTextAreaElement;
-    this.inputArea = target.value;
-    this.convertToXml();
+    this.inputText = target.value;
+    this.convert();
   }
 
-  private convertToXml() {
-    try {
-      if (this.inputArea.trim() === '') {
-        this.outputArea = '';
-        return;
-      }
-      // Parse JSON string to object
-      const jsonData = JSON.parse(this.inputArea);
+  setInputType(type: FormatType) {
+    this.selectedInputType = type;
+    this.convert();
+  }
 
-      // Convert JSON object to XML string
-      this.outputArea = convert.js2xml(jsonData, {compact: true, spaces: 2});
+  setOutputType(type: FormatType) {
+    this.selectedOutputType = type;
+    this.convert();
+  }
+
+  private convert() {
+    this.errorMessage = '';
+    this.outputText = '';
+
+    if (this.inputText.trim() === '') {
+      return;
+    }
+
+    try {
+      let data: any;
+
+      // Parse input
+      switch (this.selectedInputType) {
+        case 'JSON':
+          data = JSON.parse(this.inputText);
+          break;
+        case 'YAML':
+          data = yaml.load(this.inputText);
+          break;
+        case 'XML':
+          data = convert.xml2js(this.inputText, { compact: true });
+          break;
+      }
+
+      // Convert to output format
+      switch (this.selectedOutputType) {
+        case 'JSON':
+          this.outputText = JSON.stringify(data, null, 2);
+          break;
+        case 'YAML':
+          this.outputText = yaml.dump(data);
+          break;
+        case 'XML':
+          this.outputText = convert.js2xml(data, { compact: true, spaces: 2 });
+          break;
+      }
     } catch (error) {
-      console.error('Error converting JSON to XML:', error);
-      this.outputArea = 'Error: Invalid JSON input';
+      console.error('Conversion error:', error);
+      this.errorMessage = `Error: ${(error as Error).message}`;
     }
   }
 }

@@ -2,14 +2,35 @@
 
 <mat-card>
   <mat-card-content>
+    <section class="format-selection">
+      <mat-button-toggle-group (change)="setInputType($event.value)" [value]="selectedInputType">
+        <mat-button-toggle value="JSON">JSON</mat-button-toggle>
+        <mat-button-toggle value="YAML">YAML</mat-button-toggle>
+        <mat-button-toggle value="XML">XML</mat-button-toggle>
+      </mat-button-toggle-group>
+      <span class="arrow">→</span>
+      <mat-button-toggle-group (change)="setOutputType($event.value)" [value]="selectedOutputType">
+        <mat-button-toggle value="JSON">JSON</mat-button-toggle>
+        <mat-button-toggle value="YAML">YAML</mat-button-toggle>
+        <mat-button-toggle value="XML">XML</mat-button-toggle>
+      </mat-button-toggle-group>
+    </section>
+
     <section class="textarea-container">
       <mat-form-field appearance="fill" class="textarea-field">
-        <textarea matInput placeholder="Input JSON" class="auto-height center-placeholder" [value]="inputArea"
-                  (change)="onJsonInputChange($event)"></textarea>
+        <textarea matInput [placeholder]="'Input ' + selectedInputType"
+                  class="auto-height center-placeholder" [value]="inputText"
+                  (input)="onInputChange($event)"></textarea>
       </mat-form-field>
       <mat-form-field appearance="fill" class="textarea-field">
-        <textarea matInput placeholder="Output XML" class="auto-height center-placeholder" readonly [value]="outputArea"></textarea>
+        <textarea matInput [placeholder]="'Output ' + selectedOutputType"
+                  class="auto-height center-placeholder"
+                  readonly [value]="outputText"></textarea>
       </mat-form-field>
+    </section>
+
+    <section class="error-message-container">
+      <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
     </section>
   </mat-card-content>
 </mat-card>
