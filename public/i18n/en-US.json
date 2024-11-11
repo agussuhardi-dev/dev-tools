@@ -77,7 +77,40 @@
     "permissions": "Permissions",
     "permissions.role-switching": "Role Switching",
     "permissions.route-guard": "Route Guard",
-    "permissions.test": "Permission Test"
+    "permissions.test": "Permission Test",
+    "converts": "Converts",
+    "converts.json-to-yaml": "JSON <> YAML",
+    "converts.timestamp": "Timestamp",
+    "converts.number-base": "Number Base",
+    "converts.cron-parser": "Cron Parser",
+
+    "encoders_or_decoders": "Encoders / Decoders",
+    "encoders_or_decoders.certificate": "Certificate",
+    "encoders_or_decoders.html": "HTML",
+    "encoders_or_decoders.url": "URL",
+    "encoders_or_decoders.base64": "Base64 Text",
+    "encoders_or_decoders.gzip": "GZip",
+    "encoders_or_decoders.jwt": "JWT",
+
+    "formatters": "Formatters",
+    "formatters.json": "JSON",
+    "formatters.sql": "SQL",
+    "formatters.xml": "XML",
+
+    "generators": "Generators",
+    "generators.hash": "Hash",
+    "generators.password-generator": "Password Generator",
+    "generators.uuid": "UUID",
+    "generators.lorem-ipsum": "Lorem Ipsum",
+    "generators.checksum": "Checksum",
+
+    "text": "Text",
+    "text.escape-unescape": "Escape / Unescape",
+    "text.inspector-case-converter": "Inspector & Case Converter",
+    "text.regex-tester": "Regex Tester",
+    "text.text-diff": "Text Diff",
+    "text.xml-validator": "XML Validator",
+    "text.markdown-preview": "Markdown Preview"
   },
   "validation": {
     "required": "This field is required",
@@ -135,4 +168,5 @@
   "read_and_agree": "I have read and agree to the terms of service",
   "have_an_account": "Already have an account",
   "restore_defaults": "Restore defaults"
+
 }

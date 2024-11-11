@@ -12,23 +12,160 @@
     },
     {
       "route": "/",
-      "name": "sessions",
+      "name": "converts",
       "type": "sub",
       "icon": "question_answer",
       "children": [
         {
           "route": "403",
-          "name": "403",
+          "name": "json-to-yaml",
           "type": "link"
         },
         {
           "route": "404",
-          "name": "404",
+          "name": "timestamp",
           "type": "link"
         },
         {
           "route": "500",
-          "name": "500",
+          "name": "number-base",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "cron-parser",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "name": "encoders_or_decoders",
+      "type": "sub",
+      "icon": "question_answer",
+      "children": [
+        {
+          "route": "403",
+          "name": "certificate",
+          "type": "link"
+        },
+        {
+          "route": "404",
+          "name": "html",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "url",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "base64",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "gzip",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "jwt",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "name": "formatters",
+      "type": "sub",
+      "icon": "question_answer",
+      "children": [
+        {
+          "route": "403",
+          "name": "json",
+          "type": "link"
+        },
+        {
+          "route": "404",
+          "name": "sql",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "xml",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "name": "generators",
+      "type": "sub",
+      "icon": "question_answer",
+      "children": [
+        {
+          "route": "403",
+          "name": "hash",
+          "type": "link"
+        },
+        {
+          "route": "404",
+          "name": "password-generator",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "uuid",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "lorem-ipsum",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "checksum",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "name": "text",
+      "type": "sub",
+      "icon": "question_answer",
+      "children": [
+        {
+          "route": "403",
+          "name": "escape-unescape",
+          "type": "link"
+        },
+        {
+          "route": "404",
+          "name": "inspector-case-converter",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "regex-tester",
+          "type": "link"
+        },
+        {
+          "route": "403",
+          "name": "text-diff",
+          "type": "link"
+        },
+        {
+          "route": "404",
+          "name": "xml-validator",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "markdown-preview",
           "type": "link"
         }
       ]
