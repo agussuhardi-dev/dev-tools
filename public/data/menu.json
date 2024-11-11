@@ -11,13 +11,13 @@
       }
     },
     {
-      "route": "/",
+      "route": "converts",
       "name": "converts",
       "type": "sub",
       "icon": "question_answer",
       "children": [
         {
-          "route": "403",
+          "route": "json-yaml",
           "name": "json-to-yaml",
           "type": "link"
         },

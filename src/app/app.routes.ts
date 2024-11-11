@@ -21,6 +21,24 @@ export const routes: Routes = [
       { path: '403', component: Error403Component },
       { path: '404', component: Error404Component },
       { path: '500', component: Error500Component },
+      {
+        path: 'converts',
+        loadChildren: () => import('./routes/converts/converts.routes').then(m => m.routes),
+      },
+      {
+        path: 'encoders-decoders',
+        loadChildren: () =>
+          import('./routes/encoders-decoders/encoders-decoders.routes').then(m => m.routes),
+      },
+      {
+        path: 'formatters',
+        loadChildren: () => import('./routes/formatters/formatters.routes').then(m => m.routes),
+      },
+      {
+        path: 'generators',
+        loadChildren: () => import('./routes/generators/generators.routes').then(m => m.routes),
+      },
+      { path: 'text', loadChildren: () => import('./routes/text/text.routes').then(m => m.routes) },
     ],
   },
   {

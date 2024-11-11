@@ -1,0 +1,84 @@
+.textarea-container {
+  display: flex;
+  gap: 20px;
+  height: calc(100vh - 200px); // Adjust this value based on your layout
+}
+
+.textarea-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.auto-height {
+  flex: 1;
+  resize: none;
+}
+
+.center-placeholder {
+  text-align: left; // Changed to left alignment for actual text
+}
+
+::ng-deep .mat-mdc-form-field {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .mat-mdc-form-field-flex {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .mat-mdc-form-field-infix {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .mat-mdc-form-field-infix textarea {
+  height: 100% !important;
+  padding: 16px !important; // Add some padding
+}
+
+::ng-deep .mat-mdc-form-field-infix textarea::placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: calc(100% - 32px); // Adjust for padding
+}
+
+::ng-deep .mat-mdc-form-field.mat-focused .mat-mdc-form-field-infix textarea::placeholder {
+  color: transparent;
+}
+
+::ng-deep textarea.cdk-textarea-autosize {
+  min-height: 100% !important;
+}
+
+
+
+
+.error-message-container {
+  margin-top: 16px;
+  min-height: 24px; // Provides space for the error message
+}
+
+.error-message {
+  color: #f44336; // Red color for error messages
+  font-size: 14px;
+  margin: 0;
+  padding: 4px 8px;
+  background-color: #ffebee; // Light red background
+  border-radius: 4px;
+  border: 1px solid #ffcdd2; // Slight border for emphasis
+}
