@@ -4,6 +4,7 @@ import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatGridList, MatGridTile, MatGridTileText } from '@angular/material/grid-list';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
+import * as convert from 'xml-js';
 
 @Component({
   selector: 'app-converts-json-yaml',
@@ -22,30 +23,30 @@ import { MatInput } from '@angular/material/input';
     MatInput,
   ],
 })
-export class ConvertsJsonYamlComponent implements OnInit {
-  constructor() {}
+export class ConvertsJsonYamlComponent {
+  inputArea = '';
+  outputArea = '';
 
-  ngOnInit() {}
+  onJsonInputChange(event: Event) {
+    const target = event.target as HTMLTextAreaElement;
+    this.inputArea = target.value;
+    this.convertToXml();
+  }
 
-  dogs = [
-    { name: 'Porter', human: 'Kara' },
-    { name: 'Mal', human: 'Jeremy' },
-    { name: 'Koby', human: 'Igor' },
-    { name: 'Razzle', human: 'Ward' },
-    { name: 'Molly', human: 'Rob' },
-    { name: 'Husi', human: 'Matias' },
-  ];
+  private convertToXml() {
+    try {
+      if (this.inputArea.trim() === '') {
+        this.outputArea = '';
+        return;
+      }
+      // Parse JSON string to object
+      const jsonData = JSON.parse(this.inputArea);
 
-  tiles = [
-    { text: 'Cappuccino', cols: 3, rows: 1, color: 'lightblue' },
-    { text: 'Mocha', cols: 1, rows: 2, color: 'lightgreen' },
-    { text: 'Latte', cols: 1, rows: 1, color: 'lightpink' },
-    { text: 'Iced coffee', cols: 2, rows: 1, color: '#DDBDF1' },
-  ];
-
-  fixedCols = 4;
-  fixedRowHeight = 100;
-  ratioGutter = '1';
-  fitListHeight = '400px';
-  ratio = '4:1';
+      // Convert JSON object to XML string
+      this.outputArea = convert.js2xml(jsonData, {compact: true, spaces: 2});
+    } catch (error) {
+      console.error('Error converting JSON to XML:', error);
+      this.outputArea = 'Error: Invalid JSON input';
+    }
+  }
 }
