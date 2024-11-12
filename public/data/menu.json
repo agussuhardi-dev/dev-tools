@@ -32,7 +32,7 @@
           "type": "link"
         },
         {
-          "route": "500",
+          "route": "cron-parser",
           "name": "cron-parser",
           "type": "link"
         }

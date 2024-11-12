@@ -1,3 +1,20 @@
-<page-header></page-header>
+<breadcrumb />
 
-<p>cron-parser works!</p>
+<mat-card class="cron-converter-card">
+  <mat-card-content>
+    <h2 class="cron-converter-title">Cron Expression Converter</h2>
+
+    <mat-form-field appearance="fill" class="input-field">
+      <mat-label>Cron Expression</mat-label>
+      <input matInput [(ngModel)]="cronExpression" (input)="convertCronExpression()">
+    </mat-form-field>
+
+    <p>Detail Information: {{ detailInformation }}</p>
+
+    <mat-list>
+      <mat-list-item *ngFor="let executionTime of executionTimes">
+        <span matListItemLine>{{ executionTime | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

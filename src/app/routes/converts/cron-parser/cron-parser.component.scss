@@ -1,0 +1,36 @@
+.cron-parser-card {
+  //max-width: 800px;
+  //margin: 20px auto;
+  //padding: 20px;
+  //border-radius: 10px;
+  //box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cron-parser-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+mat-list {
+  padding-top: 0;
+}
+
+mat-list-item {
+  height: auto;
+}
+
+mat-list-item mat-list-item-title {
+  font-weight: bold;
+}
+
+mat-list-item mat-list-item-line {
+  font-size: 14px;
+  color: #666;
+  word-break: break-all;
+}
