@@ -1,3 +1,56 @@
-<page-header></page-header>
+<breadcrumb />
 
-<p>timestamp works!</p>
+<mat-card>
+  <mat-card-content>
+    <h2>Time Converter</h2>
+
+    <mat-tab-group>
+      <mat-tab label="Date and Time">
+        <section class="input-section">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Enter Date and Time (YYYY-MM-DD HH:mm:ss)</mat-label>
+            <input matInput [(ngModel)]="inputDatetime" (keydown.enter)="convertTime()" placeholder="e.g., 2023-05-15 14:30:00">
+          </mat-form-field>
+        </section>
+      </mat-tab>
+      <mat-tab label="Epoch Time">
+        <section class="input-section">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Enter Epoch Time (milliseconds)</mat-label>
+            <input matInput type="number" [(ngModel)]="inputEpoch" (keydown.enter)="convertTime()" placeholder="e.g., 1621084200000">
+          </mat-form-field>
+        </section>
+      </mat-tab>
+    </mat-tab-group>
+
+    <section class="input-section">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Select Time Zone</mat-label>
+        <mat-select [(ngModel)]="selectedTimeZone">
+          <mat-option *ngFor="let timeZone of timeZones" [value]="timeZone">
+            {{ timeZone.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+
+    <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+    <section class="results-section" *ngIf="timeInfo && Object.keys(timeInfo).length > 0">
+      <mat-list>
+        <mat-list-item>
+          <span matListItemTitle>Local Time</span>
+          <span matListItemLine>{{ timeInfo['Local']?.formattedDate }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>GMT</span>
+          <span matListItemLine>{{ timeInfo['GMT']?.formattedDate }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Selected Time Zone</span>
+          <span matListItemLine>{{ timeInfo['Selected']?.formattedDate }}</span>
+        </mat-list-item>
+      </mat-list>
+    </section>
+  </mat-card-content>
+</mat-card>

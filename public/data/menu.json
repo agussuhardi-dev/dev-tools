@@ -22,7 +22,7 @@
           "type": "link"
         },
         {
-          "route": "404",
+          "route": "timestamp",
           "name": "timestamp",
           "type": "link"
         },

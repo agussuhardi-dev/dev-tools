@@ -1,0 +1,102 @@
+@use '@angular/material' as mat;
+
+.mat-mdc-card {
+  margin-bottom: var(--gutter);
+}
+
+.mat-mdc-card-content {
+  padding: 16px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.input-section {
+  margin-top: 16px;
+  margin-bottom: 24px;
+
+  .mat-mdc-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+.error-message {
+  color: mat.m2-get-color-from-palette(mat.$red-palette, 500);
+  margin-bottom: 16px;
+}
+
+.results-section {
+  .mat-mdc-expansion-panel {
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .mat-mdc-expansion-panel-header {
+    height: auto;
+    padding: 16px;
+  }
+
+  .mat-mdc-panel-title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .mat-mdc-list {
+    padding-top: 0;
+  }
+
+  .mat-mdc-list-item {
+    height: auto;
+    padding: 8px 0;
+  }
+
+  [matListItemTitle] {
+    font-weight: 500;
+    color: mat.m2-get-color-from-palette(mat.$m2-gray-palette, 700);
+  }
+
+  [matListItemLine] {
+    font-size: 14px;
+    color: mat.m2-get-color-from-palette(mat.$m2-gray-palette, 600);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 599px) {
+  .mat-mdc-card-content {
+    padding: 12px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .results-section {
+    .mat-mdc-expansion-panel-header {
+      padding: 12px;
+    }
+
+    .mat-mdc-panel-title {
+      font-size: 14px;
+    }
+
+    [matListItemTitle] {
+      font-size: 14px;
+    }
+
+    [matListItemLine] {
+      font-size: 12px;
+    }
+  }
+}
