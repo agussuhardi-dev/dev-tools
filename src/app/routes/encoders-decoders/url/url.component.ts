@@ -1,36 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { BreadcrumbComponent, PageHeaderComponent } from '@shared';
-import { Clipboard } from '@angular/cdk/clipboard';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { MatIcon } from '@angular/material/icon';
-import { MatIconButton } from '@angular/material/button';
-import { MatTooltip } from '@angular/material/tooltip';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-encoders-decoders-url',
   templateUrl: './url.component.html',
-  styleUrl: './url.component.scss',
+  styleUrls: ['./url.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   standalone: true,
-  imports: [    PageHeaderComponent,
+  imports: [
     BreadcrumbComponent,
     PageHeaderComponent,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonToggleModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSnackBarModule,
     FormsModule,
     NgIf,
-    MatIcon,
-    MatIconButton,
-    MatTooltip,]
+  ],
 })
-export class EncodersDecodersUrlComponent {
+export class EncodersDecodersUrlComponent  {
   inputText: string = '';
   outputText: string = '';
   errorMessage: string = '';

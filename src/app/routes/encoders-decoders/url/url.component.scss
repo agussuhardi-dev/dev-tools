@@ -1,53 +1,106 @@
-.format-selection {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
+// src/app/routes/encoders-decoders/url/url.component.scss
+.url-encoder-decoder {
+  .format-selection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
 
-.clear-button {
-  margin-left: 16px;
-}
+  .clear-button {
+    margin-left: 16px;
+  }
 
-.textarea-container {
-  display: flex;
-  gap: 20px;
-  height: calc(100vh - 200px);
-}
+  .textarea-container {
+    display: flex;
+    gap: 20px;
+    height: calc(100vh - 200px);
+  }
 
-.textarea-wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
+  .textarea-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 
-.textarea-field {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
+  .textarea-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
 
-.auto-height {
-  flex: 1;
-  resize: none;
-  overflow: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  width: 100%;
-}
+  // Target the form field
+  .mat-mdc-form-field {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 
-.center-placeholder {
-  text-align: left;
-}
+  // Target the form field flex container
+  .mat-mdc-text-field-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 
-.error-message {
-  color: red;
-  font-weight: bold;
-}
+  // Target the actual textarea
+  .mat-mdc-form-field-flex {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 
-.button-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 8px;
+  // Remove default padding from the form field
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+
+  // Ensure the textarea fills its container
+  .mat-mdc-form-field-infix {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%; // Make sure the infix is full width
+    padding: 0;
+  }
+
+  // Remove default Angular Material styles that might interfere with our layout
+  .mat-mdc-form-field-subscript-wrapper::before {
+    display: none;
+  }
+
+  .mat-mdc-form-field:not(.mat-form-field-appearance-legacy)
+  .mat-mdc-form-field-suffix .mat-icon-button {
+    display: block;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  .error-message-container {
+    margin-top: 16px;
+  }
+
+  .error-message {
+    color: red;
+  }
+
+  // Set textarea width and height to 100%
+  textarea.mat-mdc-input-element {
+    width: 100%;
+    height: 100% !important;
+    resize: none;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 16px;
+    margin: 0;
+  }
 }
