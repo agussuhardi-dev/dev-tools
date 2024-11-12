@@ -1,0 +1,105 @@
+:host {
+  display: block;
+  padding: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.text-areas {
+  display: flex;
+  gap: 20px;
+  height: calc(100vh - 200px);
+}
+
+.input-area,
+.output-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+mat-form-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+textarea {
+  width: 100% !important;
+  min-height: 300px;
+  resize: none;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 16px;
+  font-weight: bold;
+}
+
+mat-button-toggle-group {
+  margin-right: 16px;
+}
+
+button[mat-raised-button] {
+  min-width: 120px;
+}
+
+::ng-deep {
+  .mat-mdc-form-field {
+    width: 100%;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    height: 100%;
+  }
+
+  .mat-mdc-form-field-flex {
+    height: 100%;
+  }
+
+  .mat-mdc-form-field-infix {
+    height: 100%;
+    padding: 0;
+    border-top: none;
+  }
+
+  textarea.mat-mdc-input-element {
+    height: 100% !important;
+    margin: 0;
+  }
+
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+}
+
+.mat-mdc-card {
+  height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-mdc-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}

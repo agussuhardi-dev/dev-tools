@@ -1,3 +1,46 @@
-<page-header></page-header>
+<mat-card>
+  <mat-card-content>
+    <div class="controls">
+      <mat-button-toggle-group [(ngModel)]="selectedOperation" (change)="convert()">
+        <mat-button-toggle value="prettify">Prettify</mat-button-toggle>
+        <mat-button-toggle value="minify">Minify</mat-button-toggle>
+        <mat-button-toggle value="validate">Validate</mat-button-toggle>
+      </mat-button-toggle-group>
+      <button mat-raised-button color="warn" (click)="clearAll()">
+        <mat-icon>clear_all</mat-icon> Clear All
+      </button>
+    </div>
 
-<p>xml works!</p>
+    <div class="text-areas">
+      <div class="input-area">
+        <mat-form-field appearance="fill">
+          <textarea matInput [(ngModel)]="inputText" (ngModelChange)="convert()" placeholder="Input XML"></textarea>
+        </mat-form-field>
+        <div class="actions">
+          <button mat-icon-button (click)="copyToClipboard(inputText)" matTooltip="Copy">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+          <button mat-icon-button (click)="pasteFromClipboard()" matTooltip="Paste">
+            <mat-icon>content_paste</mat-icon>
+          </button>
+          <button mat-icon-button (click)="fileInput.click()" matTooltip="Open XML File">
+            <mat-icon>folder_open</mat-icon>
+          </button>
+          <input #fileInput type="file" (change)="openXmlFile($event)" accept=".xml" style="display: none;">
+        </div>
+      </div>
+      <div class="output-area">
+        <mat-form-field appearance="fill">
+          <textarea matInput [value]="outputText" readonly placeholder="Output XML"></textarea>
+        </mat-form-field>
+        <div class="actions">
+          <button mat-icon-button (click)="copyToClipboard(outputText)" matTooltip="Copy">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </mat-card-content>
+</mat-card>

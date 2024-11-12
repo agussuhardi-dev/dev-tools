@@ -83,11 +83,6 @@
           "type": "link"
         },
         {
-          "route": "sql",
-          "name": "sql",
-          "type": "link"
-        },
-        {
           "route": "xml",
           "name": "xml",
           "type": "link"
