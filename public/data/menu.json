@@ -27,7 +27,7 @@
           "type": "link"
         },
         {
-          "route": "500",
+          "route": "number-base",
           "name": "number-base",
           "type": "link"
         },

@@ -1,3 +1,29 @@
-<page-header></page-header>
+<breadcrumb />
 
-<p>number-base works!</p>
+<mat-card class="number-converter-card">
+  <mat-card-content>
+    <h2 class="number-converter-title">Number Converter</h2>
+
+    <div class="input-group">
+      <mat-form-field appearance="fill" class="input-field">
+        <mat-label>Decimal</mat-label>
+        <input matInput [(ngModel)]="decimalValue" (input)="convertDecimal()">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="input-field">
+        <mat-label>Hexadecimal</mat-label>
+        <input matInput [(ngModel)]="hexValue" (input)="convertHex()">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="input-field">
+        <mat-label>Octal</mat-label>
+        <input matInput [(ngModel)]="octValue" (input)="convertOct()">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="input-field">
+        <mat-label>Binary</mat-label>
+        <input matInput [(ngModel)]="binValue" (input)="convertBin()">
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+</mat-card>
