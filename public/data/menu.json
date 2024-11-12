@@ -39,38 +39,38 @@
       ]
     },
     {
-      "route": "/",
+      "route": "encoders-decoders",
       "name": "encoders_or_decoders",
       "type": "sub",
       "icon": "question_answer",
       "children": [
         {
-          "route": "403",
+          "route": "certificate",
           "name": "certificate",
           "type": "link"
         },
         {
-          "route": "404",
+          "route": "html",
           "name": "html",
           "type": "link"
         },
         {
-          "route": "500",
+          "route": "url",
           "name": "url",
           "type": "link"
         },
         {
-          "route": "500",
+          "route": "base64-text",
           "name": "base64",
           "type": "link"
         },
         {
-          "route": "500",
+          "route": "gzip",
           "name": "gzip",
           "type": "link"
         },
         {
-          "route": "500",
+          "route": "jwt",
           "name": "jwt",
           "type": "link"
         }
