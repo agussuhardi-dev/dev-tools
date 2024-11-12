@@ -1,3 +1,85 @@
-<page-header></page-header>
+<div class="jwt-encoder-decoder">
+  <breadcrumb />
 
-<p>jwt works!</p>
+  <mat-card>
+    <mat-card-content>
+      <section class="format-selection">
+        <mat-button-toggle-group (change)="setOperation($event.value)" [value]="selectedOperation">
+          <mat-button-toggle value="encode">Encode</mat-button-toggle>
+          <mat-button-toggle value="decode">Decode</mat-button-toggle>
+        </mat-button-toggle-group>
+        <mat-form-field appearance="fill" class="algorithm-select">
+          <mat-label>Algorithm</mat-label>
+          <mat-select [(value)]="selectedAlgorithm" (selectionChange)="convert()">
+            <mat-option *ngFor="let algo of algorithms" [value]="algo">
+              {{algo}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="warn" (click)="clearAll()" class="clear-button">
+          <mat-icon>clear_all</mat-icon>
+          Clear All
+        </button>
+      </section>
+
+      <section class="secret-key-input">
+        <mat-form-field appearance="fill">
+          <mat-label>Secret Key</mat-label>
+          <input matInput [(ngModel)]="secretKey" (input)="convert()" placeholder="Enter secret key for signature">
+        </mat-form-field>
+      </section>
+
+      <section class="textarea-container">
+        <div class="textarea-wrapper">
+          <mat-form-field appearance="fill" class="textarea-field">
+            <textarea matInput [placeholder]="selectedOperation === 'encode' ? 'Input JSON to encode' : 'Input JWT to decode'"
+                      class="center-placeholder" [(ngModel)]="inputText"
+                      (input)="onInputChange($event)"></textarea>
+          </mat-form-field>
+          <div class="button-container">
+            <button mat-icon-button (click)="copyToClipboard(inputText)" matTooltip="Copy">
+              <mat-icon>content_copy</mat-icon>
+            </button>
+            <button mat-icon-button (click)="pasteFromClipboard()" matTooltip="Paste">
+              <mat-icon>content_paste</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="textarea-wrapper" *ngIf="selectedOperation === 'encode'">
+          <mat-form-field appearance="fill" class="textarea-field">
+            <textarea matInput placeholder="Output JWT"
+                      class="center-placeholder"
+                      readonly [(ngModel)]="outputJwt"></textarea>
+          </mat-form-field>
+          <div class="button-container">
+            <button mat-icon-button (click)="copyToClipboard(outputJwt)" matTooltip="Copy">
+              <mat-icon>content_copy</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="textarea-wrapper" *ngIf="selectedOperation === 'decode'">
+          <mat-form-field appearance="fill" class="textarea-field">
+            <textarea matInput placeholder="Decoded Header"
+                      class="center-placeholder"
+                      readonly [(ngModel)]="decodedHeader"></textarea>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="textarea-field">
+            <textarea matInput placeholder="Decoded Payload"
+                      class="center-placeholder"
+                      readonly [(ngModel)]="decodedPayload"></textarea>
+          </mat-form-field>
+          <div class="signature-verification">
+            <mat-icon [color]="signatureValid ? 'primary' : 'warn'">
+              {{ signatureValid ? 'check_circle' : 'error' }}
+            </mat-icon>
+            <span>Signature {{ signatureValid ? 'Valid' : 'Invalid' }}</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="error-message-container">
+        <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+      </section>
+    </mat-card-content>
+  </mat-card>
+</div>

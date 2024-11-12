@@ -1,0 +1,157 @@
+.jwt-encoder-decoder {
+  .format-selection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .algorithm-select {
+    width: 120px;
+    margin: 0 16px;
+  }
+
+  .clear-button {
+    margin-left: 16px;
+  }
+
+  .secret-key-input {
+    margin-bottom: 20px;
+
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .textarea-container {
+    display: flex;
+    gap: 20px;
+    height: calc(100vh - 300px); // Adjusted for algorithm selection
+  }
+
+  .textarea-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .textarea-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  // Target the form field
+  .mat-mdc-form-field {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  // Target the form field flex container
+  .mat-mdc-text-field-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Target the actual textarea
+  .mat-mdc-form-field-flex {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Remove default padding from the form field
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+
+  // Ensure the textarea fills its container
+  .mat-mdc-form-field-infix {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  // Remove default Angular Material styles that might interfere with our layout
+  .mat-mdc-form-field-subscript-wrapper::before {
+    display: none;
+  }
+
+  .mat-mdc-form-field:not(.mat-form-field-appearance-legacy)
+  .mat-mdc-form-field-suffix .mat-icon-button {
+    display: block;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  .error-message-container {
+    margin-top: 16px;
+  }
+
+  .error-message {
+    color: red;
+  }
+
+  // Set textarea width and height to 100%
+  textarea.mat-mdc-input-element {
+    width: 100%;
+    height: 100% !important;
+    resize: none;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 16px;
+    margin: 0;
+  }
+
+  // Center placeholder text
+  .center-placeholder::placeholder {
+    text-align: center;
+  }
+
+  .signature-verification {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    font-weight: bold;
+
+    .mat-icon {
+      margin-right: 8px;
+    }
+  }
+
+  // Responsive design
+  @media (max-width: 768px) {
+    .format-selection {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .algorithm-select {
+      width: 100%;
+      margin: 16px 0;
+    }
+
+    .clear-button {
+      margin-left: 0;
+      margin-top: 16px;
+    }
+
+    .textarea-container {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .textarea-wrapper {
+      margin-bottom: 16px;
+    }
+  }
+}
