@@ -65,11 +65,6 @@
           "type": "link"
         },
         {
-          "route": "gzip",
-          "name": "gzip",
-          "type": "link"
-        },
-        {
           "route": "jwt",
           "name": "jwt",
           "type": "link"
@@ -77,23 +72,23 @@
       ]
     },
     {
-      "route": "/",
+      "route": "formatters",
       "name": "formatters",
       "type": "sub",
       "icon": "question_answer",
       "children": [
         {
-          "route": "403",
+          "route": "json",
           "name": "json",
           "type": "link"
         },
         {
-          "route": "404",
+          "route": "sql",
           "name": "sql",
           "type": "link"
         },
         {
-          "route": "500",
+          "route": "xml",
           "name": "xml",
           "type": "link"
         }

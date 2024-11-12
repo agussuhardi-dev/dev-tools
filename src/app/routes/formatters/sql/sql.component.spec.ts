@@ -2,11 +2,11 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PageHeaderComponent } from '@shared';
 
-import { EncodersDecodersGzipComponent } from './gzip.component';
+import { FormattersSqlComponent } from './sql.component';
 
-describe('EncodersDecodersGzipComponent', () => {
-  let component: EncodersDecodersGzipComponent;
-  let fixture: ComponentFixture<EncodersDecodersGzipComponent>;
+describe('FormattersSqlComponent', () => {
+  let component: FormattersSqlComponent;
+  let fixture: ComponentFixture<FormattersSqlComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -16,7 +16,7 @@ describe('EncodersDecodersGzipComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EncodersDecodersGzipComponent);
+    fixture = TestBed.createComponent(FormattersSqlComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,57 @@
+<div class="json-formatter">
+  <breadcrumb />
+
+  <mat-card>
+    <mat-card-content>
+      <section class="format-selection">
+        <mat-button-toggle-group (change)="setOperation($event.value)" [value]="selectedOperation">
+          <mat-button-toggle value="escape">Escape</mat-button-toggle>
+          <mat-button-toggle value="unescape">Unescape</mat-button-toggle>
+          <mat-button-toggle value="uglify">Uglify</mat-button-toggle>
+          <mat-button-toggle value="prettify">Prettify</mat-button-toggle>
+          <mat-button-toggle value="validate">Validate</mat-button-toggle>
+        </mat-button-toggle-group>
+        <button mat-raised-button color="warn" (click)="clearAll()" class="clear-button">
+          <mat-icon>clear_all</mat-icon>
+          Clear All
+        </button>
+      </section>
+
+      <section class="textarea-container">
+        <div class="textarea-wrapper">
+          <mat-form-field appearance="fill" class="textarea-field">
+            <textarea matInput [placeholder]="'Input JSON to ' + selectedOperation"
+                      class="center-placeholder" [value]="inputText"
+                      (input)="onInputChange($event)"></textarea>
+          </mat-form-field>
+          <div class="button-container">
+            <button mat-icon-button (click)="copyToClipboard(inputText)" matTooltip="Copy">
+              <mat-icon>content_copy</mat-icon>
+            </button>
+            <button mat-icon-button (click)="pasteFromClipboard()" matTooltip="Paste">
+              <mat-icon>content_paste</mat-icon>
+            </button>
+            <button mat-icon-button (click)="fileInput.click()" matTooltip="Open JSON File">
+              <mat-icon>folder_open</mat-icon>
+            </button>
+            <input #fileInput type="file" (change)="openJsonFile($event)" accept=".json" style="display: none;">
+          </div>
+        </div>
+        <div class="textarea-wrapper">
+          <mat-form-field appearance="fill" class="textarea-field">
+            <textarea matInput [placeholder]="'Output ' + selectedOperation + 'd JSON'"
+                      class="center-placeholder"
+                      readonly [value]="outputText"></textarea>
+          </mat-form-field>
+          <div class="button-container">
+            <button mat-icon-button (click)="copyToClipboard(outputText)" matTooltip="Copy">
+              <mat-icon>content_copy</mat-icon>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

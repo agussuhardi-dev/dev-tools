@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { PageHeaderComponent } from '@shared';
 
 @Component({
-  selector: 'app-encoders-decoders-gzip',
-  templateUrl: './gzip.component.html',
-  styleUrl: './gzip.component.scss',
+  selector: 'app-formatters-xml',
+  templateUrl: './xml.component.html',
+  styleUrl: './xml.component.scss',
   standalone: true,
   imports: [PageHeaderComponent]
 })
-export class EncodersDecodersGzipComponent implements OnInit {
+export class FormattersXmlComponent implements OnInit {
 
   constructor() { }
 
