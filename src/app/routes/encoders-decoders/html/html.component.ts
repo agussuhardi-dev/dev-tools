@@ -1,38 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { BreadcrumbComponent, PageHeaderComponent } from '@shared';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { Clipboard } from '@angular/cdk/clipboard';
-import { MatIcon } from '@angular/material/icon';
-import { MatIconButton } from '@angular/material/button';
-import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-encoders-decoders-html',
   templateUrl: './html.component.html',
-  styleUrl: './html.component.scss',
+  styleUrls: ['./html.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [
-    PageHeaderComponent,
     BreadcrumbComponent,
     PageHeaderComponent,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonToggleModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSnackBarModule,
     FormsModule,
     NgIf,
-    MatIcon,
-    MatIconButton,
-    MatTooltip,
   ],
 })
-export class EncodersDecodersHtmlComponent {
+export class EncodersDecodersHtmlComponent  {
   inputText: string = '';
   outputText: string = '';
   errorMessage: string = '';
@@ -90,13 +89,32 @@ export class EncodersDecodersHtmlComponent {
 
     try {
       if (this.selectedOperation === 'encode') {
-        this.outputText = encodeURIComponent(this.inputText);
+        this.outputText = this.encodeHTML(this.inputText);
       } else {
-        this.outputText = decodeURIComponent(this.inputText);
+        this.outputText = this.decodeHTML(this.inputText);
       }
     } catch (error) {
       console.error('Conversion error:', error);
       this.errorMessage = `Error: ${(error as Error).message}`;
     }
+  }
+
+  private encodeHTML(html: string): string {
+    return html.replace(/[&<>"']/g, (match) => {
+      const entityMap: { [key: string]: string } = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      };
+      return entityMap[match];
+    });
+  }
+
+  private decodeHTML(encodedHtml: string): string {
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = encodedHtml;
+    return textarea.value;
   }
 }

@@ -1,53 +1,105 @@
-.format-selection {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
+.html-encoder-decoder {
+  .format-selection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
 
-.clear-button {
-  margin-left: 16px;
-}
+  .clear-button {
+    margin-left: 16px;
+  }
 
-.textarea-container {
-  display: flex;
-  gap: 20px;
-  height: calc(100vh - 200px);
-}
+  .textarea-container {
+    display: flex;
+    gap: 20px;
+    height: calc(100vh - 200px);
+  }
 
-.textarea-wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
+  .textarea-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
-.textarea-field {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
+  .textarea-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 
-.auto-height {
-  flex: 1;
-  resize: none;
-  overflow: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  width: 100%;
-}
+  // Target the form field
+  .mat-mdc-form-field {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 
-.center-placeholder {
-  text-align: left;
-}
+  // Target the form field flex container
+  .mat-mdc-text-field-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
-.error-message {
-  color: red;
-  font-weight: bold;
-}
+  // Target the actual textarea
+  .mat-mdc-form-field-flex {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
-.button-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 8px;
+  textarea.mat-mdc-input-element {
+    resize: none;
+    flex: 1;
+    min-height: 100px; // Minimum height
+    height: auto !important; // Allow it to grow
+    overflow-y: auto; // Add scrollbar if content exceeds height
+    width: 100%; // Make textarea full width
+  }
+
+  .center-placeholder {
+    text-align: left;
+  }
+
+  .error-message {
+    color: red;
+    font-weight: bold;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  // Ensure the input field takes up the full height of its container
+  .mat-mdc-form-field-infix {
+    padding: 0;
+    border-top: 0;
+  }
+
+  // Remove default padding from the form field
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+
+  // Ensure the textarea fills its container
+  .mat-mdc-form-field-infix {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%; // Make sure the infix is full width
+  }
+
+  // Remove default Angular Material styles that might interfere with our layout
+  .mat-mdc-form-field-subscript-wrapper::before {
+    display: none;
+  }
+
+  .mat-mdc-form-field:not(.mat-form-field-appearance-legacy)
+  .mat-mdc-form-field-suffix .mat-icon-button {
+    display: block;
+  }
 }

@@ -1,0 +1,53 @@
+.format-selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.clear-button {
+  margin-left: 16px;
+}
+
+.textarea-container {
+  display: flex;
+  gap: 20px;
+  height: calc(100vh - 200px);
+}
+
+.textarea-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.textarea-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.auto-height {
+  flex: 1;
+  resize: none;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  width: 100%;
+}
+
+.center-placeholder {
+  text-align: left;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
