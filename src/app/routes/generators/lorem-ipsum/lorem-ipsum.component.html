@@ -1,3 +1,37 @@
-<page-header></page-header>
-
-<p>lorem-ipsum works!</p>
+<mat-card>
+  <mat-card-title>Lorem Ipsum Generator</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="generateText()">
+      <mat-form-field appearance="fill">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option value="word">Word</mat-option>
+          <mat-option value="sentence">Sentence</mat-option>
+          <mat-option value="paragraph">Paragraph</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Length</mat-label>
+        <input matInput type="number" formControlName="length" min="1">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Word Type</mat-label>
+        <mat-select formControlName="wordType">
+          <mat-option value="lorem">Lorem Ipsum</mat-option>
+          <mat-option value="natural">Natural Words</mat-option>
+          <mat-option value="random">Random Words</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Generate</button>
+    </form>
+    <section class="output-section" *ngIf="generatedText">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Generated Text</mat-label>
+        <textarea matInput readonly [value]="generatedText" rows="10"></textarea>
+      </mat-form-field>
+      <button mat-icon-button (click)="copyToClipboard()" matTooltip="Copy to clipboard">
+        <mat-icon>content_copy</mat-icon>
+      </button>
+    </section>
+  </mat-card-content>
+</mat-card>

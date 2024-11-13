@@ -96,11 +96,6 @@
       "icon": "question_answer",
       "children": [
         {
-          "route": "hash",
-          "name": "hash",
-          "type": "link"
-        },
-        {
           "route": "password-generator",
           "name": "password-generator",
           "type": "link"
@@ -113,11 +108,6 @@
         {
           "route": "lorem-ipsum",
           "name": "lorem-ipsum",
-          "type": "link"
-        },
-        {
-          "route": "checksum",
-          "name": "checksum",
           "type": "link"
         }
       ]
