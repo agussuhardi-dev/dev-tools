@@ -1,0 +1,67 @@
+.uuid-generator {
+  padding: 20px;
+
+  mat-card {
+    //max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .format-selection {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    mat-button-toggle-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      .mat-button-toggle {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    }
+
+    .info-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-left: 10px;
+
+      .info-icon {
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.54); /* Default icon color */
+      }
+    }
+
+    mat-form-field {
+      flex: 1;
+      min-width: 200px;
+    }
+  }
+
+  .uuid-v3v5-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    mat-form-field {
+      flex: 1;
+      min-width: 200px;
+    }
+  }
+
+  .output-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .full-width {
+      width: 100%;
+    }
+  }
+}

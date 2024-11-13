@@ -90,33 +90,33 @@
       ]
     },
     {
-      "route": "/",
+      "route": "generators",
       "name": "generators",
       "type": "sub",
       "icon": "question_answer",
       "children": [
         {
-          "route": "403",
+          "route": "hash",
           "name": "hash",
           "type": "link"
         },
         {
-          "route": "404",
+          "route": "password-generator",
           "name": "password-generator",
           "type": "link"
         },
         {
-          "route": "500",
+          "route": "uuid",
           "name": "uuid",
           "type": "link"
         },
         {
-          "route": "500",
+          "route": "lorem-ipsum",
           "name": "lorem-ipsum",
           "type": "link"
         },
         {
-          "route": "500",
+          "route": "checksum",
           "name": "checksum",
           "type": "link"
         }
