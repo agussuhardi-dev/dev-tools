@@ -1,3 +1,30 @@
-<page-header></page-header>
+<div class="markdown-editor">
+  <mat-card class="input-section">
+    <mat-card-header>
+      <mat-card-title>Markdown Input</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="fill" class="full-width">
+        <textarea matInput [(ngModel)]="markdownInput" (ngModelChange)="updatePreview()" placeholder="Enter markdown here"></textarea>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="copyToClipboard(markdownInput)">Copy</button>
+      <button mat-raised-button color="accent" (click)="pasteFromClipboard()">Paste</button>
+      <button mat-raised-button color="warn" (click)="fileInput.click()">Load File</button>
+      <input type="file" #fileInput style="display: none;" (change)="loadFile($event)" accept=".md,.txt">
+    </mat-card-actions>
+  </mat-card>
 
-<p>markdown-preview works!</p>
+  <mat-card class="preview-section">
+    <mat-card-header>
+      <mat-card-title>Markdown Preview</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="markdown-preview" [innerHTML]="markdownOutput"></div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="copyToClipboard(markdownOutput)">Copy HTML</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,30 @@
+.markdown-editor {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.input-section,
+.preview-section {
+  flex: 1;
+}
+
+.full-width {
+  width: 100%;
+}
+
+textarea {
+  min-height: 300px;
+}
+
+.markdown-preview {
+  min-height: 300px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+}

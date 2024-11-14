@@ -1,0 +1,43 @@
+.text-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &.inline-mode {
+    flex-direction: row;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.differences {
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+
+  div {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 2px;
+
+    &.removed {
+      background-color: #ffcdd2;
+      color: #b71c1c;
+    }
+
+    &.added {
+      background-color: #c8e6c9;
+      color: #1b5e20;
+    }
+  }
+
+  code {
+    font-family: monospace;
+    display: block;
+    padding: 2px 4px;
+  }
+}
