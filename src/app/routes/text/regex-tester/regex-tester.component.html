@@ -1,3 +1,35 @@
-<page-header></page-header>
+<mat-card class="regex-tester">
+  <mat-card-header>
+    <mat-card-title>Regex Tester and Validator</mat-card-title>
+  </mat-card-header>
 
-<p>regex-tester works!</p>
+  <mat-card-content>
+    <form (ngSubmit)="testRegex()">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Regex Pattern</mat-label>
+        <input matInput [(ngModel)]="regexPattern" name="regexPattern" (input)="testRegex()">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Flags</mat-label>
+        <input matInput [(ngModel)]="flags" name="flags" (input)="testRegex()">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Test String</mat-label>
+        <textarea matInput [(ngModel)]="testString" name="testString" rows="5" (input)="testRegex()"></textarea>
+      </mat-form-field>
+    </form>
+
+    <mat-card class="result" [ngClass]="{'invalid': !isValid}">
+      <mat-card-header>
+        <mat-card-title>Result</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p *ngIf="isValid && matchResult">Match found: {{ matchResult | json }}</p>
+        <p *ngIf="isValid && !matchResult">No match found</p>
+        <p *ngIf="!isValid">Invalid regex pattern</p>
+      </mat-card-content>
+    </mat-card>
+  </mat-card-content>
+</mat-card>

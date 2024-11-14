@@ -1,0 +1,18 @@
+.regex-tester {
+  max-width: 600px;
+  margin: 20px auto;
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .result {
+    margin-top: 20px;
+    background-color: #e6f3ff;
+
+    &.invalid {
+      background-color: #ffe6e6;
+    }
+  }
+}
