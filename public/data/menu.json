@@ -14,7 +14,7 @@
       "route": "converts",
       "name": "converts",
       "type": "sub",
-      "icon": "question_answer",
+      "icon": "published_with_changes",
       "children": [
         {
           "route": "json-yaml",
@@ -42,7 +42,7 @@
       "route": "encoders-decoders",
       "name": "encoders_or_decoders",
       "type": "sub",
-      "icon": "question_answer",
+      "icon": "tag",
       "children": [
         {
           "route": "certificate",
@@ -75,7 +75,7 @@
       "route": "formatters",
       "name": "formatters",
       "type": "sub",
-      "icon": "question_answer",
+      "icon": "checklist",
       "children": [
         {
           "route": "json",
@@ -93,7 +93,7 @@
       "route": "generators",
       "name": "generators",
       "type": "sub",
-      "icon": "question_answer",
+      "icon": "generating_tokens",
       "children": [
         {
           "route": "password-generator",
@@ -116,7 +116,7 @@
       "route": "text",
       "name": "text",
       "type": "sub",
-      "icon": "question_answer",
+      "icon": "title",
       "children": [
         {
           "route": "inspector-case-converter",
