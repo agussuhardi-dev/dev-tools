@@ -4,24 +4,27 @@
     <form (ngSubmit)="generateText()" [formGroup]="form">
       <mat-form-field appearance="fill">
         <mat-label>Type</mat-label>
-        <mat-select formControlName="type">
-          <mat-option value="word">Word</mat-option>
-          <mat-option value="sentence">Sentence</mat-option>
-          <mat-option value="paragraph">Paragraph</mat-option>
-        </mat-select>
+        <select matNativeControl formControlName="type">
+          <option value="word">Word</option>
+          <option value="sentence">Sentence</option>
+          <option value="paragraph">Paragraph</option>
+        </select>
       </mat-form-field>
+
       <mat-form-field appearance="fill">
         <mat-label>Length</mat-label>
         <input formControlName="length" matInput min="1" type="number">
       </mat-form-field>
+
       <mat-form-field appearance="fill">
         <mat-label>Word Type</mat-label>
-        <mat-select formControlName="wordType">
-          <mat-option value="lorem">Lorem Ipsum</mat-option>
-          <mat-option value="natural">Natural Words</mat-option>
-          <mat-option value="random">Random Words</mat-option>
-        </mat-select>
+        <select matNativeControl formControlName="wordType">
+          <option value="lorem">Lorem Ipsum</option>
+          <option value="natural">Natural Words</option>
+          <option value="random">Random Words</option>
+        </select>
       </mat-form-field>
+
       <button [disabled]="form.invalid" color="primary" mat-raised-button type="submit">Generate</button>
     </form>
     <section *ngIf="generatedText" class="output-section">

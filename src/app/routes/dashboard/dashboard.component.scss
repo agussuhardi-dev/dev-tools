@@ -1,0 +1,29 @@
+.dashboard-container {
+  margin: 0 auto;
+  padding: 20px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .widget-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .widget {
+      flex: 1;
+      margin: 0 10px;
+
+      mat-card-content {
+        padding: 16px;
+      }
+    }
+  }
+
+  button {
+    display: block;
+    margin: 0 auto;
+  }
+}

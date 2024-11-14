@@ -23,8 +23,18 @@ h2 {
     margin-bottom: 16px;
   }
 
-  button {
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  select {
     width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
   }
 }
 
@@ -34,7 +44,8 @@ h2 {
 }
 
 .results-section {
-  .mat-mdc-expansion-panel {
+  .mat-mdc-list-item {
+    height: auto;
     margin-bottom: 16px;
 
     &:last-child {
@@ -42,37 +53,15 @@ h2 {
     }
   }
 
-  .mat-mdc-expansion-panel-header {
-    height: auto;
-    padding: 16px;
-  }
-
-  .mat-mdc-panel-title {
-    font-size: 16px;
-    font-weight: 500;
-  }
-
-  .mat-mdc-list {
-    padding-top: 0;
-  }
-
-  .mat-mdc-list-item {
-    height: auto;
-    padding: 8px 0;
-  }
-
-  [matListItemTitle] {
-    font-weight: 500;
-    color: mat.m2-get-color-from-palette(mat.$m2-gray-palette, 700);
-  }
-
-  [matListItemLine] {
-    font-size: 14px;
-    color: mat.m2-get-color-from-palette(mat.$m2-gray-palette, 600);
+  .mat-mdc-list-item-title {
+    font-weight: bold;
   }
 }
 
-// Responsive adjustments
+.full-width {
+  width: 100%;
+}
+
 @media (max-width: 599px) {
   .mat-mdc-card-content {
     padding: 12px;
@@ -83,19 +72,11 @@ h2 {
   }
 
   .results-section {
-    .mat-mdc-expansion-panel-header {
-      padding: 12px;
-    }
-
-    .mat-mdc-panel-title {
+    .mat-mdc-list-item-title {
       font-size: 14px;
     }
 
-    [matListItemTitle] {
-      font-size: 14px;
-    }
-
-    [matListItemLine] {
+    .mat-mdc-list-item-line {
       font-size: 12px;
     }
   }

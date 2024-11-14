@@ -9,7 +9,7 @@
         <section class="input-section">
           <mat-form-field appearance="fill" class="full-width">
             <mat-label>Enter Date and Time (YYYY-MM-DD HH:mm:ss)</mat-label>
-            <input (keydown.enter)="convertTime()" [(ngModel)]="inputDatetime" matInput
+            <input matInput [(ngModel)]="inputDatetime" (keydown.enter)="convertTime()"
                    placeholder="e.g., 2023-05-15 14:30:00">
           </mat-form-field>
         </section>
@@ -18,22 +18,20 @@
         <section class="input-section">
           <mat-form-field appearance="fill" class="full-width">
             <mat-label>Enter Epoch Time (milliseconds)</mat-label>
-            <input (keydown.enter)="convertTime()" [(ngModel)]="inputEpoch" matInput placeholder="e.g., 1621084200000"
-                   type="number">
+            <input matInput [(ngModel)]="inputEpoch" (keydown.enter)="convertTime()"
+                   placeholder="e.g., 1621084200000" type="number">
           </mat-form-field>
         </section>
       </mat-tab>
     </mat-tab-group>
 
     <section class="input-section">
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Select Time Zone</mat-label>
-        <mat-select [(ngModel)]="selectedTimeZone">
-          <mat-option *ngFor="let timeZone of timeZones" [value]="timeZone">
-            {{ timeZone.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <label for="timeZoneSelect">Select Time Zone:</label>
+      <select id="timeZoneSelect" [(ngModel)]="selectedTimeZone" (ngModelChange)="convertTime()" class="full-width">
+        <option *ngFor="let timeZone of timeZones" [ngValue]="timeZone">
+          {{ timeZone.name }}
+        </option>
+      </select>
     </section>
 
     <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>

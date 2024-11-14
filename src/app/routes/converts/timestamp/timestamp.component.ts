@@ -7,10 +7,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgForOf, NgIf } from '@angular/common';
 import { MatNativeDateModule, MatOption } from '@angular/material/core';
-import { MatTab, MatTabGroup } from '@angular/material/tabs';
-import { MatSelect } from '@angular/material/select';
+import { MatTab, MatTabGroup, MatTabsModule } from '@angular/material/tabs';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-converts-timestamp',
@@ -33,6 +33,15 @@ import { MatSelect } from '@angular/material/select';
     MatTab,
     MatSelect,
     MatOption,
+
+    FormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatListModule,
+    NgForOf,
   ],
 })
 export class ConvertsTimestampComponent implements OnInit {
@@ -42,39 +51,37 @@ export class ConvertsTimestampComponent implements OnInit {
   selectedTimeZone: any;
   timeZones: any[] = [];
   errorMessage: string = '';
-  protected readonly Object = Object;
 
   ngOnInit() {
     this.timeZones = [
       { name: 'UTC-12:00 (Baker Island Time)', offset: 'Etc/GMT+12' },
       { name: 'UTC-11:00 (Samoa Time)', offset: 'Etc/GMT+11' },
-      { name: 'UTC-10:00 (Hawaii-Aleutian Time)', offset: 'Etc/GMT+10' },
-      { name: 'UTC-09:00 (Alaska Time)', offset: 'Etc/GMT+9' },
-      { name: 'UTC-08:00 (Pacific Time)', offset: 'Etc/GMT+8' },
-      { name: 'UTC-07:00 (Mountain Time)', offset: 'Etc/GMT+7' },
-      { name: 'UTC-06:00 (Central Time)', offset: 'Etc/GMT+6' },
-      { name: 'UTC-05:00 (Eastern Time)', offset: 'Etc/GMT+5' },
-      { name: 'UTC-04:00 (Atlantic Time)', offset: 'Etc/GMT+4' },
-      { name: 'UTC-03:00 (West Africa Time)', offset: 'Etc/GMT+3' },
-      { name: 'UTC-02:00 (Mid-Atlantic Time)', offset: 'Etc/GMT+2' },
-      { name: 'UTC-01:00 (Greenwich Mean Time)', offset: 'Etc/GMT+1' },
-      { name: 'UTC+00:00 (Coordinated Universal Time)', offset: 'Etc/GMT' },
-      { name: 'UTC+01:00 (Central European Time)', offset: 'Etc/GMT-1' },
-      { name: 'UTC+02:00 (Eastern European Time)', offset: 'Etc/GMT-2' },
-      { name: 'UTC+03:00 (Moscow Time)', offset: 'Etc/GMT-3' },
-      { name: 'UTC+04:00 (Astrakhan Time)', offset: 'Etc/GMT-4' },
-      { name: 'UTC+05:00 (Pakistan Time)', offset: 'Etc/GMT-5' },
-      { name: 'UTC+06:00 (Bangladesh Time)', offset: 'Etc/GMT-6' },
-      { name: 'UTC+07:00 (Krasnoyarsk Time)', offset: 'Etc/GMT-7' },
-      { name: 'UTC+08:00 (China Standard Time)', offset: 'Etc/GMT-8' },
-      { name: 'UTC+09:00 (Japan Standard Time)', offset: 'Etc/GMT-9' },
-      { name: 'UTC+10:00 (Australian Western Standard Time)', offset: 'Etc/GMT-10' },
-      { name: 'UTC+11:00 (Solomon Islands Time)', offset: 'Etc/GMT-11' },
-      { name: 'UTC+12:00 (Kiribati Time)', offset: 'Etc/GMT-12' },
-      { name: 'UTC+13:00 (New Zealand Standard Time)', offset: 'Etc/GMT-13' },
-      { name: 'UTC+14:00 (Line Islands Time)', offset: 'Etc/GMT-14' },
+      { name: 'UTC-10:00 (Hawaii-Aleutian Time)', offset: 'Pacific/Honolulu' },
+      { name: 'UTC-09:00 (Alaska Time)', offset: 'America/Anchorage' },
+      { name: 'UTC-08:00 (Pacific Time)', offset: 'America/Los_Angeles' },
+      { name: 'UTC-07:00 (Mountain Time)', offset: 'America/Denver' },
+      { name: 'UTC-06:00 (Central Time)', offset: 'America/Chicago' },
+      { name: 'UTC-05:00 (Eastern Time)', offset: 'America/New_York' },
+      { name: 'UTC-04:00 (Atlantic Time)', offset: 'America/Halifax' },
+      { name: 'UTC-03:00 (Brasilia Time)', offset: 'America/Sao_Paulo' },
+      { name: 'UTC-02:00 (Fernando de Noronha Time)', offset: 'America/Noronha' },
+      { name: 'UTC-01:00 (Azores Time)', offset: 'Atlantic/Azores' },
+      { name: 'UTC+00:00 (Greenwich Mean Time)', offset: 'UTC' },
+      { name: 'UTC+01:00 (Central European Time)', offset: 'Europe/Paris' },
+      { name: 'UTC+02:00 (Eastern European Time)', offset: 'Europe/Kiev' },
+      { name: 'UTC+03:00 (Moscow Time)', offset: 'Europe/Moscow' },
+      { name: 'UTC+04:00 (Gulf Standard Time)', offset: 'Asia/Dubai' },
+      { name: 'UTC+05:00 (Pakistan Standard Time)', offset: 'Asia/Karachi' },
+      { name: 'UTC+05:30 (India Standard Time)', offset: 'Asia/Kolkata' },
+      { name: 'UTC+06:00 (Bangladesh Standard Time)', offset: 'Asia/Dhaka' },
+      { name: 'UTC+07:00 (Indochina Time)', offset: 'Asia/Bangkok' },
+      { name: 'UTC+08:00 (China Standard Time)', offset: 'Asia/Shanghai' },
+      { name: 'UTC+09:00 (Japan Standard Time)', offset: 'Asia/Tokyo' },
+      { name: 'UTC+10:00 (Australian Eastern Standard Time)', offset: 'Australia/Sydney' },
+      { name: 'UTC+11:00 (Solomon Islands Time)', offset: 'Pacific/Guadalcanal' },
+      { name: 'UTC+12:00 (New Zealand Standard Time)', offset: 'Pacific/Auckland' },
     ];
-    this.selectedTimeZone = this.timeZones[12];
+    this.selectedTimeZone = this.timeZones[12]; // Default to UTC
   }
 
   convertTime(): void {
@@ -107,6 +114,7 @@ export class ConvertsTimestampComponent implements OnInit {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
+      timeZoneName: 'short',
     };
 
     const formattedDate = date.toLocaleString('en-US', options);
@@ -120,8 +128,11 @@ export class ConvertsTimestampComponent implements OnInit {
       day: dateParts[1],
       hour: timeParts[0],
       minute: timeParts[1],
-      second: timeParts[2],
+      second: timeParts[2].split(' ')[0],
+      timeZone: parts[2],
       formattedDate: formattedDate,
     };
   }
+
+  protected readonly Object = Object;
 }

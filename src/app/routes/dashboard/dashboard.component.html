@@ -1,1 +1,25 @@
-<page-header />
+<div class="dashboard-container">
+  <breadcrumb />
+  <h1 class="mat-headline-4">Welcome to Your Dashboard</h1>
+  <div class="widget-container">
+    <mat-card class="widget">
+      <mat-card-header>
+        <mat-card-title>User Stats</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Total Users: {{userCount}}</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="widget">
+      <mat-card-header>
+        <mat-card-title>Recent Activity</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let activity of recentActivities">{{activity}}</mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <button mat-raised-button color="primary" (click)="refreshData()">Refresh Data</button>
+</div>

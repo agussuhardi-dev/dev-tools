@@ -34,7 +34,7 @@ import { MatTooltip } from '@angular/material/tooltip';
     MatTooltip,
   ],
 })
-export class EncodersDecodersBase64TextComponent {
+export class EncodersDecodersBase64TextComponent  {
   selectedOperation: 'encode' | 'decode' = 'encode';
   selectedTextEncoding: 'ascii' | 'utf8' = 'utf8';
   inputText = '';

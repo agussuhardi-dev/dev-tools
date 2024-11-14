@@ -8,13 +8,10 @@
           <mat-button-toggle value="encode">Encode</mat-button-toggle>
           <mat-button-toggle value="decode">Decode</mat-button-toggle>
         </mat-button-toggle-group>
-        <mat-form-field appearance="fill">
-          <mat-label>Text Encoding</mat-label>
-          <mat-select (selectionChange)="onTextEncodingChange()" [(value)]="selectedTextEncoding" style="width: 100px;">
-            <mat-option value="ascii">ASCII</mat-option>
-            <mat-option value="utf8">UTF-8</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <select (change)="onTextEncodingChange()" [(ngModel)]="selectedTextEncoding" class="encoding-select">
+          <option value="ascii">ASCII</option>
+          <option value="utf8">UTF-8</option>
+        </select>
         <button (click)="clearAll()" class="clear-button" color="warn" mat-raised-button>
           <mat-icon>clear_all</mat-icon>
           Clear All
@@ -23,12 +20,10 @@
 
       <section class="textarea-container">
         <div class="textarea-wrapper">
-          <mat-form-field appearance="fill" class="textarea-field">
-            <textarea (input)="onInputChange()"
-                      [(ngModel)]="inputText"
-                      [placeholder]="'Input text ' + (selectedOperation === 'encode' ? 'to encode' : 'to decode')" class="center-placeholder"
-                      matInput></textarea>
-          </mat-form-field>
+          <textarea (input)="onInputChange()"
+                    [(ngModel)]="inputText"
+                    [placeholder]="'Input text ' + (selectedOperation === 'encode' ? 'to encode' : 'to decode')"
+                    class="center-placeholder"></textarea>
           <div class="button-container">
             <button (click)="copyToClipboard(inputText)" mat-icon-button matTooltip="Copy">
               <mat-icon>content_copy</mat-icon>
@@ -39,12 +34,10 @@
           </div>
         </div>
         <div class="textarea-wrapper">
-          <mat-form-field appearance="fill" class="textarea-field">
-            <textarea [(ngModel)]="outputText"
-                      [placeholder]="'Output ' + (selectedOperation === 'encode' ? 'encoded' : 'decoded') + ' text'"
-                      class="center-placeholder"
-                      matInput readonly></textarea>
-          </mat-form-field>
+          <textarea [(ngModel)]="outputText"
+                    [placeholder]="'Output ' + (selectedOperation === 'encode' ? 'encoded' : 'decoded') + ' text'"
+                    class="center-placeholder"
+                    readonly></textarea>
           <div class="button-container">
             <button (click)="copyToClipboard(outputText)" mat-icon-button matTooltip="Copy">
               <mat-icon>content_copy</mat-icon>

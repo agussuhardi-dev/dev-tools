@@ -45,11 +45,6 @@
       "icon": "tag",
       "children": [
         {
-          "route": "certificate",
-          "name": "certificate",
-          "type": "link"
-        },
-        {
           "route": "html",
           "name": "html",
           "type": "link"

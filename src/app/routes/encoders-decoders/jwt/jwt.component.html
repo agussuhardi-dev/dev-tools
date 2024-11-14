@@ -8,14 +8,11 @@
           <mat-button-toggle value="encode">Encode</mat-button-toggle>
           <mat-button-toggle value="decode">Decode</mat-button-toggle>
         </mat-button-toggle-group>
-        <mat-form-field appearance="fill" class="algorithm-select">
-          <mat-label>Algorithm</mat-label>
-          <mat-select (selectionChange)="convert()" [(value)]="selectedAlgorithm">
-            <mat-option *ngFor="let algo of algorithms" [value]="algo">
-              {{ algo }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <mat-select (selectionChange)="convert()" [(value)]="selectedAlgorithm" class="algorithm-select">
+          <mat-option *ngFor="let algo of algorithms" [value]="algo">
+            {{ algo }}
+          </mat-option>
+        </mat-select>
         <button (click)="clearAll()" class="clear-button" color="warn" mat-raised-button>
           <mat-icon>clear_all</mat-icon>
           Clear All
@@ -44,7 +41,13 @@
             <button (click)="pasteFromClipboard()" mat-icon-button matTooltip="Paste">
               <mat-icon>content_paste</mat-icon>
             </button>
+
+            <button (click)="autoFormatJson()" mat-icon-button matTooltip="Auto Format JSON">
+              <mat-icon>format_align_left</mat-icon>
+            </button>
           </div>
+
+
         </div>
         <div *ngIf="selectedOperation === 'encode'" class="textarea-wrapper">
           <mat-form-field appearance="fill" class="textarea-field">

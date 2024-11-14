@@ -198,4 +198,15 @@ export class EncodersDecodersJwtComponent {
     // In a real application, use a proper cryptographic library
     return signature === btoa(data + secret + algorithm);
   }
+
+  autoFormatJson() {
+    try {
+      const parsedJson = JSON.parse(this.inputText);
+      this.inputText = JSON.stringify(parsedJson, null, 2);
+      this.convert(); // Trigger conversion after formatting
+    } catch (error) {
+      this.errorMessage = 'Invalid JSON: Unable to format';
+    }
+  }
+
 }
