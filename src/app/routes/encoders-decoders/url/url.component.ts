@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { BreadcrumbComponent, PageHeaderComponent } from '@shared';
+import { BreadcrumbComponent } from '@shared';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -19,7 +19,6 @@ import { Clipboard } from '@angular/cdk/clipboard';
   standalone: true,
   imports: [
     BreadcrumbComponent,
-    PageHeaderComponent,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -31,13 +30,16 @@ import { Clipboard } from '@angular/cdk/clipboard';
     NgIf,
   ],
 })
-export class EncodersDecodersUrlComponent  {
+export class EncodersDecodersUrlComponent {
   inputText: string = '';
   outputText: string = '';
   errorMessage: string = '';
   selectedOperation: 'encode' | 'decode' = 'encode';
 
-  constructor(private clipboard: Clipboard, private snackBar: MatSnackBar) {}
+  constructor(
+    private clipboard: Clipboard,
+    private snackBar: MatSnackBar
+  ) {}
 
   onInputChange(event: Event) {
     const target = event.target as HTMLTextAreaElement;

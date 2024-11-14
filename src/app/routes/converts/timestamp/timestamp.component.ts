@@ -1,26 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { BreadcrumbComponent, PageHeaderComponent } from '@shared';
-import { MatCard, MatCardContent, MatCardModule } from '@angular/material/card';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
-import {
-  MatDatepicker,
-  MatDatepickerInput,
-  MatDatepickerModule,
-  MatDatepickerToggle,
-} from '@angular/material/datepicker';
-import {
-  MatAccordion,
-  MatExpansionModule,
-  MatExpansionPanel,
-  MatExpansionPanelTitle,
-} from '@angular/material/expansion';
-import { MatList, MatListItem, MatListModule } from '@angular/material/list';
-import { MatInput, MatInputModule } from '@angular/material/input';
+import { BreadcrumbComponent } from '@shared';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-import { NgFor, NgForOf, NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { MatNativeDateModule, MatOption } from '@angular/material/core';
 import { MatTab, MatTabGroup } from '@angular/material/tabs';
-import { MatButton } from '@angular/material/button';
 import { MatSelect } from '@angular/material/select';
 
 @Component({
@@ -42,7 +31,6 @@ import { MatSelect } from '@angular/material/select';
     BreadcrumbComponent,
     MatTabGroup,
     MatTab,
-    MatButton,
     MatSelect,
     MatOption,
   ],
@@ -54,6 +42,7 @@ export class ConvertsTimestampComponent implements OnInit {
   selectedTimeZone: any;
   timeZones: any[] = [];
   errorMessage: string = '';
+  protected readonly Object = Object;
 
   ngOnInit() {
     this.timeZones = [
@@ -105,7 +94,7 @@ export class ConvertsTimestampComponent implements OnInit {
     this.timeInfo = {
       Local: this.getFullTimeInfo(inputDate, Intl.DateTimeFormat().resolvedOptions().timeZone),
       GMT: this.getFullTimeInfo(inputDate, 'GMT'),
-      Selected: this.getFullTimeInfo(inputDate, this.selectedTimeZone.offset)
+      Selected: this.getFullTimeInfo(inputDate, this.selectedTimeZone.offset),
     };
   }
 
@@ -135,6 +124,4 @@ export class ConvertsTimestampComponent implements OnInit {
       formattedDate: formattedDate,
     };
   }
-
-  protected readonly Object = Object;
 }

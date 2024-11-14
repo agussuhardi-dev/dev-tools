@@ -30,7 +30,10 @@ export class FormattersXmlComponent {
   errorMessage = '';
   selectedOperation: 'prettify' | 'minify' | 'validate' = 'prettify';
 
-  constructor(private snackBar: MatSnackBar, private clipboard: Clipboard) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private clipboard: Clipboard
+  ) {}
 
   convert() {
     this.errorMessage = '';
@@ -79,7 +82,11 @@ export class FormattersXmlComponent {
 
       formatted += indent + trimmedLine + '\n';
 
-      if (trimmedLine.startsWith('<') && !trimmedLine.startsWith('</') && !trimmedLine.endsWith('/>')) {
+      if (
+        trimmedLine.startsWith('<') &&
+        !trimmedLine.startsWith('</') &&
+        !trimmedLine.endsWith('/>')
+      ) {
         depth++;
       }
     }
@@ -113,11 +120,11 @@ export class FormattersXmlComponent {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
       const reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = e => {
         this.inputText = e.target?.result as string;
         this.convert();
       };
-      reader.onerror = (e) => {
+      reader.onerror = e => {
         this.errorMessage = 'Error reading file: ' + (reader.error?.message || 'Unknown error');
       };
       reader.readAsText(file);

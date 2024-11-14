@@ -10,13 +10,13 @@
         </mat-button-toggle-group>
         <mat-form-field appearance="fill" class="algorithm-select">
           <mat-label>Algorithm</mat-label>
-          <mat-select [(value)]="selectedAlgorithm" (selectionChange)="convert()">
+          <mat-select (selectionChange)="convert()" [(value)]="selectedAlgorithm">
             <mat-option *ngFor="let algo of algorithms" [value]="algo">
-              {{algo}}
+              {{ algo }}
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-raised-button color="warn" (click)="clearAll()" class="clear-button">
+        <button (click)="clearAll()" class="clear-button" color="warn" mat-raised-button>
           <mat-icon>clear_all</mat-icon>
           Clear All
         </button>
@@ -25,48 +25,49 @@
       <section class="secret-key-input">
         <mat-form-field appearance="fill">
           <mat-label>Secret Key</mat-label>
-          <input matInput [(ngModel)]="secretKey" (input)="convert()" placeholder="Enter secret key for signature">
+          <input (input)="convert()" [(ngModel)]="secretKey" matInput placeholder="Enter secret key for signature">
         </mat-form-field>
       </section>
 
       <section class="textarea-container">
         <div class="textarea-wrapper">
           <mat-form-field appearance="fill" class="textarea-field">
-            <textarea matInput [placeholder]="selectedOperation === 'encode' ? 'Input JSON to encode' : 'Input JWT to decode'"
-                      class="center-placeholder" [(ngModel)]="inputText"
-                      (input)="onInputChange($event)"></textarea>
+            <textarea (input)="onInputChange($event)"
+                      [(ngModel)]="inputText"
+                      [placeholder]="selectedOperation === 'encode' ? 'Input JSON to encode' : 'Input JWT to decode'" class="center-placeholder"
+                      matInput></textarea>
           </mat-form-field>
           <div class="button-container">
-            <button mat-icon-button (click)="copyToClipboard(inputText)" matTooltip="Copy">
+            <button (click)="copyToClipboard(inputText)" mat-icon-button matTooltip="Copy">
               <mat-icon>content_copy</mat-icon>
             </button>
-            <button mat-icon-button (click)="pasteFromClipboard()" matTooltip="Paste">
+            <button (click)="pasteFromClipboard()" mat-icon-button matTooltip="Paste">
               <mat-icon>content_paste</mat-icon>
             </button>
           </div>
         </div>
-        <div class="textarea-wrapper" *ngIf="selectedOperation === 'encode'">
+        <div *ngIf="selectedOperation === 'encode'" class="textarea-wrapper">
           <mat-form-field appearance="fill" class="textarea-field">
-            <textarea matInput placeholder="Output JWT"
-                      class="center-placeholder"
-                      readonly [(ngModel)]="outputJwt"></textarea>
+            <textarea [(ngModel)]="outputJwt" class="center-placeholder"
+                      matInput
+                      placeholder="Output JWT" readonly></textarea>
           </mat-form-field>
           <div class="button-container">
-            <button mat-icon-button (click)="copyToClipboard(outputJwt)" matTooltip="Copy">
+            <button (click)="copyToClipboard(outputJwt)" mat-icon-button matTooltip="Copy">
               <mat-icon>content_copy</mat-icon>
             </button>
           </div>
         </div>
-        <div class="textarea-wrapper" *ngIf="selectedOperation === 'decode'">
+        <div *ngIf="selectedOperation === 'decode'" class="textarea-wrapper">
           <mat-form-field appearance="fill" class="textarea-field">
-            <textarea matInput placeholder="Decoded Header"
-                      class="center-placeholder"
-                      readonly [(ngModel)]="decodedHeader"></textarea>
+            <textarea [(ngModel)]="decodedHeader" class="center-placeholder"
+                      matInput
+                      placeholder="Decoded Header" readonly></textarea>
           </mat-form-field>
           <mat-form-field appearance="fill" class="textarea-field">
-            <textarea matInput placeholder="Decoded Payload"
-                      class="center-placeholder"
-                      readonly [(ngModel)]="decodedPayload"></textarea>
+            <textarea [(ngModel)]="decodedPayload" class="center-placeholder"
+                      matInput
+                      placeholder="Decoded Payload" readonly></textarea>
           </mat-form-field>
           <div class="signature-verification">
             <mat-icon [color]="signatureValid ? 'primary' : 'warn'">
@@ -78,7 +79,7 @@
       </section>
 
       <section class="error-message-container">
-        <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
       </section>
     </mat-card-content>
   </mat-card>

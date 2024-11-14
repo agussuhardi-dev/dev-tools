@@ -2,15 +2,16 @@ import { Component, Inject } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
-  MatDialogActions, MatDialogClose,
+  MatDialogActions,
+  MatDialogClose,
   MatDialogContent,
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Clipboard } from '@angular/cdk/clipboard';
-import { v1, v4, v5, NIL as NIL_UUID, v3, v6, v7 } from 'uuid';
+import { v1, v3, v4, v5, v6, v7 } from 'uuid';
 import { MatButton, MatButtonModule } from '@angular/material/button';
-import { BreadcrumbComponent, PageHeaderComponent } from '@shared';
+import { BreadcrumbComponent } from '@shared';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -27,7 +28,6 @@ import { MatTooltip } from '@angular/material/tooltip';
   standalone: true,
   imports: [
     BreadcrumbComponent,
-    PageHeaderComponent,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -55,7 +55,7 @@ export class GeneratorsUuidComponent {
     '6': 'UUID v6: Based on timestamp and random data',
     '7': 'UUID v7: Based on Unix timestamp and random data',
     '8': 'UUID v8: Custom (vendor-specific)',
-  }
+  };
 
   constructor(
     private clipboard: Clipboard,
@@ -98,6 +98,24 @@ export class GeneratorsUuidComponent {
     }
   }
 
+  isGenerateButtonDisabled(): boolean {
+    return this.uuidVersion === '2' || this.uuidVersion === '8';
+  }
+
+  copyToClipboard() {
+    this.clipboard.copy(this.outputUuids);
+    this.snackBar.open('Copied to clipboard', 'Close', {
+      duration: 2000,
+    });
+  }
+
+  showUuidInfo(version: keyof typeof this.uuidInfo) {
+    this.dialog.open(UuidInfoDialogComponent, {
+      data: { version, info: this.uuidInfo[version] },
+      width: '400px',
+    });
+  }
+
   private generateV2UUID(): string {
     // Implement V2 UUID generation or use a library
     // Example implementation (actual implementation may vary)
@@ -135,24 +153,6 @@ export class GeneratorsUuidComponent {
 
   private generateV8UUID(): string {
     return 'V8 UUID not implemented';
-  }
-
-  isGenerateButtonDisabled(): boolean {
-    return this.uuidVersion === '2' || this.uuidVersion === '8';
-  }
-
-  copyToClipboard() {
-    this.clipboard.copy(this.outputUuids);
-    this.snackBar.open('Copied to clipboard', 'Close', {
-      duration: 2000,
-    });
-  }
-
-  showUuidInfo(version: keyof typeof this.uuidInfo) {
-    this.dialog.open(UuidInfoDialogComponent, {
-      data: { version, info: this.uuidInfo[version] },
-      width: '400px',
-    });
   }
 }
 

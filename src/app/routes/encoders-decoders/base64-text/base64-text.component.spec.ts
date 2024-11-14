@@ -1,4 +1,4 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PageHeaderComponent } from '@shared';
 
@@ -10,9 +10,8 @@ describe('EncodersDecodersBase64TextComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, PageHeaderComponent]
-    })
-    .compileComponents();
+      imports: [NoopAnimationsModule, PageHeaderComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

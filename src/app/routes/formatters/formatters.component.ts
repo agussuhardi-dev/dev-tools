@@ -6,13 +6,10 @@ import { PageHeaderComponent } from '@shared';
   templateUrl: './formatters.component.html',
   styleUrl: './formatters.component.scss',
   standalone: true,
-  imports: [PageHeaderComponent]
+  imports: [PageHeaderComponent],
 })
 export class FormattersFormattersComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

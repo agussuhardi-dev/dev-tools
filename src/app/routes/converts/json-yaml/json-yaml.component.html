@@ -18,19 +18,19 @@
 
     <section class="textarea-container">
       <mat-form-field appearance="fill" class="textarea-field">
-        <textarea matInput [placeholder]="'Input ' + selectedInputType"
-                  class="auto-height center-placeholder" [value]="inputText"
-                  (input)="onInputChange($event)"></textarea>
+        <textarea (input)="onInputChange($event)" [placeholder]="'Input ' + selectedInputType"
+                  [value]="inputText" class="auto-height center-placeholder"
+                  matInput></textarea>
       </mat-form-field>
       <mat-form-field appearance="fill" class="textarea-field">
-        <textarea matInput [placeholder]="'Output ' + selectedOutputType"
+        <textarea [placeholder]="'Output ' + selectedOutputType" [value]="outputText"
                   class="auto-height center-placeholder"
-                  readonly [value]="outputText"></textarea>
+                  matInput readonly></textarea>
       </mat-form-field>
     </section>
 
     <section class="error-message-container">
-      <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
     </section>
   </mat-card-content>
 </mat-card>

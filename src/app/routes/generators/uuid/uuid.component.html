@@ -5,13 +5,13 @@
       <section class="format-selection">
         <mat-button-toggle-group [(ngModel)]="uuidVersion">
           <mat-button-toggle value="1">UUID v1</mat-button-toggle>
-          <mat-button-toggle value="2" [disabled]="true">UUID v2</mat-button-toggle>
+          <mat-button-toggle [disabled]="true" value="2">UUID v2</mat-button-toggle>
           <mat-button-toggle value="3">UUID v3</mat-button-toggle>
           <mat-button-toggle value="4">UUID v4</mat-button-toggle>
           <mat-button-toggle value="5">UUID v5</mat-button-toggle>
           <mat-button-toggle value="6">UUID v6</mat-button-toggle>
           <mat-button-toggle value="7">UUID v7</mat-button-toggle>
-          <mat-button-toggle value="8" [disabled]="true">UUID v8</mat-button-toggle>
+          <mat-button-toggle [disabled]="true" value="8">UUID v8</mat-button-toggle>
         </mat-button-toggle-group>
         <div class="info-icons">
           <mat-icon (click)="showUuidInfo('1')" class="info-icon">info</mat-icon>
@@ -25,31 +25,33 @@
         </div>
         <mat-form-field>
           <mat-label>Number of UUIDs</mat-label>
-          <input matInput type="number" [(ngModel)]="totalRows" min="1">
+          <input [(ngModel)]="totalRows" matInput min="1" type="number">
         </mat-form-field>
       </section>
       <ng-container *ngIf="uuidVersion === '3' || uuidVersion === '5'">
         <section class="uuid-v3v5-inputs">
           <mat-form-field>
             <mat-label>Namespace UUID</mat-label>
-            <input matInput [(ngModel)]="namespaceInput" required>
+            <input [(ngModel)]="namespaceInput" matInput required>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Name</mat-label>
-            <input matInput [(ngModel)]="nameInput" required>
+            <input [(ngModel)]="nameInput" matInput required>
           </mat-form-field>
         </section>
       </ng-container>
       <section class="output-section">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Generated UUIDs</mat-label>
-          <textarea matInput readonly [value]="outputUuids" rows="10"></textarea>
+          <textarea [value]="outputUuids" matInput readonly rows="10"></textarea>
         </mat-form-field>
-        <button mat-icon-button (click)="copyToClipboard()" matTooltip="Copy to clipboard">
+        <button (click)="copyToClipboard()" mat-icon-button matTooltip="Copy to clipboard">
           <mat-icon>content_copy</mat-icon>
         </button>
       </section>
-      <button mat-raised-button color="primary" (click)="generateUuids()" [disabled]="isGenerateButtonDisabled()">Generate UUIDs</button>
+      <button (click)="generateUuids()" [disabled]="isGenerateButtonDisabled()" color="primary" mat-raised-button>
+        Generate UUIDs
+      </button>
     </mat-card-content>
   </mat-card>
 </div>

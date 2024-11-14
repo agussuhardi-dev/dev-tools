@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BreadcrumbComponent, PageHeaderComponent } from '@shared';
+import { BreadcrumbComponent } from '@shared';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,14 +7,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
-import { NgIf, NgFor, SlicePipe, DatePipe } from '@angular/common';
+import { DatePipe, NgFor } from '@angular/common';
+
 @Component({
   selector: 'app-converts-cron-parser',
   templateUrl: './cron-parser.component.html',
   styleUrl: './cron-parser.component.scss',
   standalone: true,
   imports: [
-    PageHeaderComponent,
     MatCardModule,
     MatListModule,
     MatFormFieldModule,
@@ -22,20 +22,17 @@ import { NgIf, NgFor, SlicePipe, DatePipe } from '@angular/common';
     MatButtonModule,
     MatTabsModule,
     FormsModule,
-    NgIf,
     NgFor,
     BreadcrumbComponent,
-    SlicePipe,
     DatePipe,
   ],
 })
-export class ConvertsCronParserComponent   implements OnInit {
+export class ConvertsCronParserComponent implements OnInit {
   cronExpression: string = '';
   executionTimes: Date[] = [];
   detailInformation: string = '';
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   convertCronExpression(): void {
     const cronExpressionParts = this.cronExpression.split(' ');
@@ -91,15 +88,15 @@ export class ConvertsCronParserComponent   implements OnInit {
       const executionTime = new Date(nextExecutionDate.getTime());
       if (seconds.includes('/')) {
         const interval = parseInt(seconds.split('/')[1]);
-        executionTime.setSeconds(executionTime.getSeconds() + (i * interval));
+        executionTime.setSeconds(executionTime.getSeconds() + i * interval);
       }
       if (minutes.includes('/')) {
         const interval = parseInt(minutes.split('/')[1]);
-        executionTime.setMinutes(executionTime.getMinutes() + (i * interval));
+        executionTime.setMinutes(executionTime.getMinutes() + i * interval);
       }
       if (hours.includes('/')) {
         const interval = parseInt(hours.split('/')[1]);
-        executionTime.setHours(executionTime.getHours() + (i * interval));
+        executionTime.setHours(executionTime.getHours() + i * interval);
       }
       this.executionTimes.push(executionTime);
     }

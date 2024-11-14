@@ -6,13 +6,10 @@ import { PageHeaderComponent } from '@shared';
   templateUrl: './converts.component.html',
   styleUrl: './converts.component.scss',
   standalone: true,
-  imports: [PageHeaderComponent]
+  imports: [PageHeaderComponent],
 })
 export class ConvertsConvertsComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

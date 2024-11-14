@@ -1,46 +1,47 @@
 <mat-card>
   <mat-card-content>
     <div class="controls">
-      <mat-button-toggle-group [(ngModel)]="selectedOperation" (change)="convert()">
+      <mat-button-toggle-group (change)="convert()" [(ngModel)]="selectedOperation">
         <mat-button-toggle value="prettify">Prettify</mat-button-toggle>
         <mat-button-toggle value="minify">Minify</mat-button-toggle>
         <mat-button-toggle value="validate">Validate</mat-button-toggle>
       </mat-button-toggle-group>
-      <button mat-raised-button color="warn" (click)="clearAll()">
-        <mat-icon>clear_all</mat-icon> Clear All
+      <button (click)="clearAll()" color="warn" mat-raised-button>
+        <mat-icon>clear_all</mat-icon>
+        Clear All
       </button>
     </div>
 
     <div class="text-areas">
       <div class="input-area">
         <mat-form-field appearance="fill">
-          <textarea matInput [(ngModel)]="inputText" (ngModelChange)="convert()" placeholder="Input XML"></textarea>
+          <textarea (ngModelChange)="convert()" [(ngModel)]="inputText" matInput placeholder="Input XML"></textarea>
         </mat-form-field>
         <div class="actions">
-          <button mat-icon-button (click)="copyToClipboard(inputText)" matTooltip="Copy">
+          <button (click)="copyToClipboard(inputText)" mat-icon-button matTooltip="Copy">
             <mat-icon>content_copy</mat-icon>
           </button>
-          <button mat-icon-button (click)="pasteFromClipboard()" matTooltip="Paste">
+          <button (click)="pasteFromClipboard()" mat-icon-button matTooltip="Paste">
             <mat-icon>content_paste</mat-icon>
           </button>
-          <button mat-icon-button (click)="fileInput.click()" matTooltip="Open XML File">
+          <button (click)="fileInput.click()" mat-icon-button matTooltip="Open XML File">
             <mat-icon>folder_open</mat-icon>
           </button>
-          <input #fileInput type="file" (change)="openXmlFile($event)" accept=".xml" style="display: none;">
+          <input #fileInput (change)="openXmlFile($event)" accept=".xml" style="display: none;" type="file">
         </div>
       </div>
       <div class="output-area">
         <mat-form-field appearance="fill">
-          <textarea matInput [value]="outputText" readonly placeholder="Output XML"></textarea>
+          <textarea [value]="outputText" matInput placeholder="Output XML" readonly></textarea>
         </mat-form-field>
         <div class="actions">
-          <button mat-icon-button (click)="copyToClipboard(outputText)" matTooltip="Copy">
+          <button (click)="copyToClipboard(outputText)" mat-icon-button matTooltip="Copy">
             <mat-icon>content_copy</mat-icon>
           </button>
         </div>
       </div>
     </div>
 
-    <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
   </mat-card-content>
 </mat-card>

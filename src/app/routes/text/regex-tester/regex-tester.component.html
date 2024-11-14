@@ -7,21 +7,21 @@
     <form (ngSubmit)="testRegex()">
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Regex Pattern</mat-label>
-        <input matInput [(ngModel)]="regexPattern" name="regexPattern" (input)="testRegex()">
+        <input (input)="testRegex()" [(ngModel)]="regexPattern" matInput name="regexPattern">
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Flags</mat-label>
-        <input matInput [(ngModel)]="flags" name="flags" (input)="testRegex()">
+        <input (input)="testRegex()" [(ngModel)]="flags" matInput name="flags">
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Test String</mat-label>
-        <textarea matInput [(ngModel)]="testString" name="testString" rows="5" (input)="testRegex()"></textarea>
+        <textarea (input)="testRegex()" [(ngModel)]="testString" matInput name="testString" rows="5"></textarea>
       </mat-form-field>
     </form>
 
-    <mat-card class="result" [ngClass]="{'invalid': !isValid}">
+    <mat-card [ngClass]="{'invalid': !isValid}" class="result">
       <mat-card-header>
         <mat-card-title>Result</mat-card-title>
       </mat-card-header>

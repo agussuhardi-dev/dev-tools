@@ -31,9 +31,9 @@ export class TextMarkdownPreviewComponent {
 
   constructor(private snackBar: MatSnackBar) {}
 
-async updatePreview() {
-  this.markdownOutput = await marked(this.markdownInput);
-}
+  async updatePreview() {
+    this.markdownOutput = await marked(this.markdownInput);
+  }
 
   copyToClipboard(text: string) {
     navigator.clipboard.writeText(text).then(() => {

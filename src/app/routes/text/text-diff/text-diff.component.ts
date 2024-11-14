@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { BreadcrumbComponent, PageHeaderComponent } from '@shared';
+import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -8,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
-import { NgForOf, NgIf } from '@angular/common';
+import { NgForOf } from '@angular/common';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { MatTooltip } from '@angular/material/tooltip';
 
@@ -18,8 +17,6 @@ import { MatTooltip } from '@angular/material/tooltip';
   styleUrl: './text-diff.component.scss',
   standalone: true,
   imports: [
-    BreadcrumbComponent,
-    PageHeaderComponent,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -28,7 +25,6 @@ import { MatTooltip } from '@angular/material/tooltip';
     MatIconModule,
     MatSnackBarModule,
     FormsModule,
-    NgIf,
     MatSlideToggle,
     MatTooltip,
     NgForOf,
@@ -68,7 +64,7 @@ export class TextTextDiffComponent {
   }
 
   pasteFromClipboard(target: 'old' | 'new') {
-    navigator.clipboard.readText().then((text) => {
+    navigator.clipboard.readText().then(text => {
       if (target === 'old') {
         this.oldText = text;
       } else {

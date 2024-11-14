@@ -4,54 +4,59 @@
   </mat-card-header>
   <mat-card-content>
     <mat-form-field appearance="fill" class="full-width">
-      <textarea matInput [(ngModel)]="originalText" (select)="onTextAreaSelect($event)" placeholder="Enter your text here" rows="10"></textarea>
+      <textarea (select)="onTextAreaSelect($event)" [(ngModel)]="originalText" matInput
+                placeholder="Enter your text here" rows="10"></textarea>
     </mat-form-field>
 
     <div class="button-row">
-      <button mat-raised-button color="primary" (click)="convertCase('sentence')">Sentence case</button>
-      <button mat-raised-button color="primary" (click)="convertCase('lower')">lower case</button>
-      <button mat-raised-button color="primary" (click)="convertCase('upper')">UPPER CASE</button>
-      <button mat-raised-button color="primary" (click)="convertCase('title')">Title Case</button>
-      <button mat-raised-button color="primary" (click)="convertCase('camel')">camelCase</button>
-      <button mat-raised-button color="primary" (click)="convertCase('pascal')">PascalCase</button>
-      <button mat-raised-button color="primary" (click)="convertCase('snake')">snake_case</button>
-      <button mat-raised-button color="primary" (click)="convertCase('constant')">CONSTANT_CASE</button>
-      <button mat-raised-button color="primary" (click)="convertCase('train')">train-case</button>
-      <button mat-raised-button color="primary" (click)="convertCase('alternating')">aLtErNaTiNg cAsE</button>
-      <button mat-raised-button color="primary" (click)="convertCase('inverse')">InVeRsE CaSe</button>
+      <button (click)="convertCase('sentence')" color="primary" mat-raised-button>Sentence case</button>
+      <button (click)="convertCase('lower')" color="primary" mat-raised-button>lower case</button>
+      <button (click)="convertCase('upper')" color="primary" mat-raised-button>UPPER CASE</button>
+      <button (click)="convertCase('title')" color="primary" mat-raised-button>Title Case</button>
+      <button (click)="convertCase('camel')" color="primary" mat-raised-button>camelCase</button>
+      <button (click)="convertCase('pascal')" color="primary" mat-raised-button>PascalCase</button>
+      <button (click)="convertCase('snake')" color="primary" mat-raised-button>snake_case</button>
+      <button (click)="convertCase('constant')" color="primary" mat-raised-button>CONSTANT_CASE</button>
+      <button (click)="convertCase('train')" color="primary" mat-raised-button>train-case</button>
+      <button (click)="convertCase('alternating')" color="primary" mat-raised-button>aLtErNaTiNg cAsE</button>
+      <button (click)="convertCase('inverse')" color="primary" mat-raised-button>InVeRsE CaSe</button>
     </div>
 
     <div class="button-row">
-      <button mat-raised-button color="accent" (click)="sortLines('alphabetize')">Alphabetize</button>
-      <button mat-raised-button color="accent" (click)="sortLines('reverseAlphabetize')">Reverse Alphabetize</button>
-      <button mat-raised-button color="accent" (click)="sortLines('alphabetizeLastWord')">Alphabetize by last word</button>
-      <button mat-raised-button color="accent" (click)="sortLines('reverseAlphabetizeLastWord')">Reverse Alphabetize by last word</button>
-      <button mat-raised-button color="accent" (click)="sortLines('reverse')">Reverse</button>
-      <button mat-raised-button color="accent" (click)="sortLines('randomize')">Randomize</button>
+      <button (click)="sortLines('alphabetize')" color="accent" mat-raised-button>Alphabetize</button>
+      <button (click)="sortLines('reverseAlphabetize')" color="accent" mat-raised-button>Reverse Alphabetize</button>
+      <button (click)="sortLines('alphabetizeLastWord')" color="accent" mat-raised-button>Alphabetize by last word
+      </button>
+      <button (click)="sortLines('reverseAlphabetizeLastWord')" color="accent" mat-raised-button>Reverse Alphabetize by
+        last word
+      </button>
+      <button (click)="sortLines('reverse')" color="accent" mat-raised-button>Reverse</button>
+      <button (click)="sortLines('randomize')" color="accent" mat-raised-button>Randomize</button>
     </div>
 
     <mat-form-field appearance="fill" class="full-width">
-      <textarea matInput [(ngModel)]="convertedText" placeholder="Converted text" rows="10" readonly></textarea>
+      <textarea [(ngModel)]="convertedText" matInput placeholder="Converted text" readonly rows="10"></textarea>
     </mat-form-field>
 
     <div class="button-row">
-      <button mat-raised-button color="warn" (click)="copyText()">Copy</button>
-      <button mat-raised-button color="warn" (click)="pasteText()">Paste</button>
-      <button mat-raised-button color="warn" (click)="clearText()">Clear</button>
+      <button (click)="copyText()" color="warn" mat-raised-button>Copy</button>
+      <button (click)="pasteText()" color="warn" mat-raised-button>Paste</button>
+      <button (click)="clearText()" color="warn" mat-raised-button>Clear</button>
     </div>
 
     <mat-card class="info-card">
       <mat-card-title>Text Information</mat-card-title>
       <mat-card-content>
         <h3>Selection:</h3>
-        <p>Line: {{textInfo.selection.line}}, Column: {{textInfo.selection.column}}, Position: {{textInfo.selection.position}}</p>
+        <p>Line: {{ textInfo.selection.line }}, Column: {{ textInfo.selection.column }},
+          Position: {{ textInfo.selection.position }}</p>
         <h3>Static:</h3>
-        <p>Characters: {{textInfo.static.characters}}</p>
-        <p>Words: {{textInfo.static.words}}</p>
-        <p>Lines: {{textInfo.static.lines}}</p>
-        <p>Sentences: {{textInfo.static.sentences}}</p>
-        <p>Paragraphs: {{textInfo.static.paragraphs}}</p>
-        <p>Bytes: {{textInfo.static.bytes}}</p>
+        <p>Characters: {{ textInfo.static.characters }}</p>
+        <p>Words: {{ textInfo.static.words }}</p>
+        <p>Lines: {{ textInfo.static.lines }}</p>
+        <p>Sentences: {{ textInfo.static.sentences }}</p>
+        <p>Paragraphs: {{ textInfo.static.paragraphs }}</p>
+        <p>Bytes: {{ textInfo.static.bytes }}</p>
       </mat-card-content>
     </mat-card>
   </mat-card-content>

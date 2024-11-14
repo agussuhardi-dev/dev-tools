@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { loremIpsum, LoremIpsum } from 'lorem-ipsum';
-import { MatCard, MatCardContent, MatCardModule, MatCardTitle } from '@angular/material/card';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOption, MatSelect } from '@angular/material/select';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
-import { MatButton, MatButtonModule, MatIconButton } from '@angular/material/button';
-import { MatInput, MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { MatTooltip } from '@angular/material/tooltip';
 import { NgIf } from '@angular/common';
-import { BreadcrumbComponent, PageHeaderComponent } from '@shared';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @Component({
@@ -20,8 +25,6 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
   styleUrls: ['./lorem-ipsum.component.scss'],
   standalone: true,
   imports: [
-    BreadcrumbComponent,
-    PageHeaderComponent,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,

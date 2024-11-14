@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { BreadcrumbComponent, PageHeaderComponent } from '@shared';
+import { BreadcrumbComponent } from '@shared';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -19,7 +19,6 @@ import { Clipboard } from '@angular/cdk/clipboard';
   standalone: true,
   imports: [
     BreadcrumbComponent,
-    PageHeaderComponent,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -31,13 +30,16 @@ import { Clipboard } from '@angular/cdk/clipboard';
     NgIf,
   ],
 })
-export class EncodersDecodersHtmlComponent  {
+export class EncodersDecodersHtmlComponent {
   inputText: string = '';
   outputText: string = '';
   errorMessage: string = '';
   selectedOperation: 'encode' | 'decode' = 'encode';
 
-  constructor(private clipboard: Clipboard, private snackBar: MatSnackBar) {}
+  constructor(
+    private clipboard: Clipboard,
+    private snackBar: MatSnackBar
+  ) {}
 
   onInputChange(event: Event) {
     const target = event.target as HTMLTextAreaElement;
@@ -100,13 +102,13 @@ export class EncodersDecodersHtmlComponent  {
   }
 
   private encodeHTML(html: string): string {
-    return html.replace(/[&<>"']/g, (match) => {
+    return html.replace(/[&<>"']/g, match => {
       const entityMap: { [key: string]: string } = {
         '&': '&amp;',
         '<': '&lt;',
         '>': '&gt;',
         '"': '&quot;',
-        "'": '&#39;'
+        "'": '&#39;',
       };
       return entityMap[match];
     });

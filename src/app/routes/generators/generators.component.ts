@@ -6,13 +6,10 @@ import { PageHeaderComponent } from '@shared';
   templateUrl: './generators.component.html',
   styleUrl: './generators.component.scss',
   standalone: true,
-  imports: [PageHeaderComponent]
+  imports: [PageHeaderComponent],
 })
 export class GeneratorsGeneratorsComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

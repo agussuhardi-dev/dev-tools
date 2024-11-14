@@ -5,18 +5,18 @@
   <mat-card-content>
     <mat-slide-toggle [(ngModel)]="inlineMode">Inline Mode</mat-slide-toggle>
 
-    <div class="text-inputs" [class.inline-mode]="inlineMode">
+    <div [class.inline-mode]="inlineMode" class="text-inputs">
       <mat-form-field appearance="fill">
         <mat-label>Old Text</mat-label>
-        <textarea matInput [(ngModel)]="oldText" rows="10"></textarea>
+        <textarea [(ngModel)]="oldText" matInput rows="10"></textarea>
         <mat-card-actions align="end">
-          <button mat-icon-button (click)="copyToClipboard(oldText)" matTooltip="Copy">
+          <button (click)="copyToClipboard(oldText)" mat-icon-button matTooltip="Copy">
             <mat-icon>content_copy</mat-icon>
           </button>
-          <button mat-icon-button (click)="pasteFromClipboard('old')" matTooltip="Paste">
+          <button (click)="pasteFromClipboard('old')" mat-icon-button matTooltip="Paste">
             <mat-icon>content_paste</mat-icon>
           </button>
-          <button mat-icon-button (click)="clearText('old')" matTooltip="Clear">
+          <button (click)="clearText('old')" mat-icon-button matTooltip="Clear">
             <mat-icon>clear</mat-icon>
           </button>
         </mat-card-actions>
@@ -24,28 +24,28 @@
 
       <mat-form-field appearance="fill">
         <mat-label>New Text</mat-label>
-        <textarea matInput [(ngModel)]="newText" rows="10"></textarea>
+        <textarea [(ngModel)]="newText" matInput rows="10"></textarea>
         <mat-card-actions align="end">
-          <button mat-icon-button (click)="copyToClipboard(newText)" matTooltip="Copy">
+          <button (click)="copyToClipboard(newText)" mat-icon-button matTooltip="Copy">
             <mat-icon>content_copy</mat-icon>
           </button>
-          <button mat-icon-button (click)="pasteFromClipboard('new')" matTooltip="Paste">
+          <button (click)="pasteFromClipboard('new')" mat-icon-button matTooltip="Paste">
             <mat-icon>content_paste</mat-icon>
           </button>
-          <button mat-icon-button (click)="clearText('new')" matTooltip="Clear">
+          <button (click)="clearText('new')" mat-icon-button matTooltip="Clear">
             <mat-icon>clear</mat-icon>
           </button>
         </mat-card-actions>
       </mat-form-field>
     </div>
 
-    <button mat-raised-button color="primary" (click)="comparetexts()">Compare Texts</button>
+    <button (click)="comparetexts()" color="primary" mat-raised-button>Compare Texts</button>
 
     <div class="differences">
       <div *ngFor="let diff of differences"
-           [class.removed]="diff.startsWith('-')"
-           [class.added]="diff.startsWith('+')">
-        <code>{{diff}}</code>
+           [class.added]="diff.startsWith('+')"
+           [class.removed]="diff.startsWith('-')">
+        <code>{{ diff }}</code>
       </div>
     </div>
   </mat-card-content>

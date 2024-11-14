@@ -6,13 +6,10 @@ import { PageHeaderComponent } from '@shared';
   templateUrl: './encoders-decoders.component.html',
   styleUrl: './encoders-decoders.component.scss',
   standalone: true,
-  imports: [PageHeaderComponent]
+  imports: [PageHeaderComponent],
 })
 export class EncodersDecodersEncodersDecodersComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

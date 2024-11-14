@@ -9,7 +9,8 @@
         <section class="input-section">
           <mat-form-field appearance="fill" class="full-width">
             <mat-label>Enter Date and Time (YYYY-MM-DD HH:mm:ss)</mat-label>
-            <input matInput [(ngModel)]="inputDatetime" (keydown.enter)="convertTime()" placeholder="e.g., 2023-05-15 14:30:00">
+            <input (keydown.enter)="convertTime()" [(ngModel)]="inputDatetime" matInput
+                   placeholder="e.g., 2023-05-15 14:30:00">
           </mat-form-field>
         </section>
       </mat-tab>
@@ -17,7 +18,8 @@
         <section class="input-section">
           <mat-form-field appearance="fill" class="full-width">
             <mat-label>Enter Epoch Time (milliseconds)</mat-label>
-            <input matInput type="number" [(ngModel)]="inputEpoch" (keydown.enter)="convertTime()" placeholder="e.g., 1621084200000">
+            <input (keydown.enter)="convertTime()" [(ngModel)]="inputEpoch" matInput placeholder="e.g., 1621084200000"
+                   type="number">
           </mat-form-field>
         </section>
       </mat-tab>
@@ -34,9 +36,9 @@
       </mat-form-field>
     </section>
 
-    <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
 
-    <section class="results-section" *ngIf="timeInfo && Object.keys(timeInfo).length > 0">
+    <section *ngIf="timeInfo && Object.keys(timeInfo).length > 0" class="results-section">
       <mat-list>
         <mat-list-item>
           <span matListItemTitle>Local Time</span>

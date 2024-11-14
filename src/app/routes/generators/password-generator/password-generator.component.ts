@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BreadcrumbComponent, PageHeaderComponent } from '@shared';
+import { BreadcrumbComponent } from '@shared';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,7 +14,6 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./password-generator.component.scss'],
   standalone: true,
   imports: [
-    PageHeaderComponent,
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,

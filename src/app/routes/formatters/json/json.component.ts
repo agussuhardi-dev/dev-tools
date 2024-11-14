@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { BreadcrumbComponent, PageHeaderComponent } from '@shared';
+import { BreadcrumbComponent } from '@shared';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -19,7 +19,6 @@ import { Clipboard } from '@angular/cdk/clipboard';
   standalone: true,
   imports: [
     BreadcrumbComponent,
-    PageHeaderComponent,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -37,7 +36,10 @@ export class FormattersJsonComponent {
   errorMessage: string = '';
   selectedOperation: 'escape' | 'unescape' | 'uglify' | 'prettify' | 'validate' = 'prettify';
 
-  constructor(private snackBar: MatSnackBar, private clipboard: Clipboard) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private clipboard: Clipboard
+  ) {}
 
   setOperation(operation: 'escape' | 'unescape' | 'uglify' | 'prettify' | 'validate') {
     this.selectedOperation = operation;
@@ -112,11 +114,11 @@ export class FormattersJsonComponent {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
       const reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = e => {
         this.inputText = e.target?.result as string;
         this.convert();
       };
-      reader.onerror = (e) => {
+      reader.onerror = e => {
         this.errorMessage = 'Error reading file: ' + (reader.error?.message || 'Unknown error');
       };
       reader.readAsText(file);

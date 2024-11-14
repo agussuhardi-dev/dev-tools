@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { BreadcrumbComponent, PageHeaderComponent } from '@shared';
+import { Component } from '@angular/core';
+import { BreadcrumbComponent } from '@shared';
 import { MatCard, MatCardContent } from '@angular/material/card';
-import { MatGridList, MatGridTile, MatGridTileText } from '@angular/material/grid-list';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import * as yaml from 'js-yaml';
@@ -11,20 +10,15 @@ import { NgIf } from '@angular/common';
 
 type FormatType = 'JSON' | 'YAML' | 'XML';
 
-
 @Component({
   selector: 'app-converts-json-yaml',
   templateUrl: './json-yaml.component.html',
   styleUrl: './json-yaml.component.scss',
   standalone: true,
   imports: [
-    PageHeaderComponent,
     BreadcrumbComponent,
     MatCard,
     MatCardContent,
-    MatGridList,
-    MatGridTile,
-    MatGridTileText,
     MatFormField,
     MatInput,
     MatButtonToggleGroup,

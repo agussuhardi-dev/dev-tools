@@ -5,14 +5,15 @@
     </mat-card-header>
     <mat-card-content>
       <mat-form-field appearance="fill" class="full-width">
-        <textarea matInput [(ngModel)]="markdownInput" (ngModelChange)="updatePreview()" placeholder="Enter markdown here"></textarea>
+        <textarea (ngModelChange)="updatePreview()" [(ngModel)]="markdownInput" matInput
+                  placeholder="Enter markdown here"></textarea>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="copyToClipboard(markdownInput)">Copy</button>
-      <button mat-raised-button color="accent" (click)="pasteFromClipboard()">Paste</button>
-      <button mat-raised-button color="warn" (click)="fileInput.click()">Load File</button>
-      <input type="file" #fileInput style="display: none;" (change)="loadFile($event)" accept=".md,.txt">
+      <button (click)="copyToClipboard(markdownInput)" color="primary" mat-raised-button>Copy</button>
+      <button (click)="pasteFromClipboard()" color="accent" mat-raised-button>Paste</button>
+      <button (click)="fileInput.click()" color="warn" mat-raised-button>Load File</button>
+      <input #fileInput (change)="loadFile($event)" accept=".md,.txt" style="display: none;" type="file">
     </mat-card-actions>
   </mat-card>
 
@@ -21,10 +22,10 @@
       <mat-card-title>Markdown Preview</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div class="markdown-preview" [innerHTML]="markdownOutput"></div>
+      <div [innerHTML]="markdownOutput" class="markdown-preview"></div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="copyToClipboard(markdownOutput)">Copy HTML</button>
+      <button (click)="copyToClipboard(markdownOutput)" color="primary" mat-raised-button>Copy HTML</button>
     </mat-card-actions>
   </mat-card>
 </div>

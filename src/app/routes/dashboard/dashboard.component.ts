@@ -9,6 +9,4 @@ import { PageHeaderComponent } from '@shared';
   standalone: true,
   imports: [PageHeaderComponent],
 })
-export class DashboardComponent {
-
-}
+export class DashboardComponent {}

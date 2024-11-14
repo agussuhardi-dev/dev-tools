@@ -7,22 +7,22 @@
     <div class="input-group">
       <mat-form-field appearance="fill" class="input-field">
         <mat-label>Decimal</mat-label>
-        <input matInput [(ngModel)]="decimalValue" (input)="convertDecimal()">
+        <input (input)="convertDecimal()" [(ngModel)]="decimalValue" matInput>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="input-field">
         <mat-label>Hexadecimal</mat-label>
-        <input matInput [(ngModel)]="hexValue" (input)="convertHex()">
+        <input (input)="convertHex()" [(ngModel)]="hexValue" matInput>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="input-field">
         <mat-label>Octal</mat-label>
-        <input matInput [(ngModel)]="octValue" (input)="convertOct()">
+        <input (input)="convertOct()" [(ngModel)]="octValue" matInput>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="input-field">
         <mat-label>Binary</mat-label>
-        <input matInput [(ngModel)]="binValue" (input)="convertBin()">
+        <input (input)="convertBin()" [(ngModel)]="binValue" matInput>
       </mat-form-field>
     </div>
   </mat-card-content>

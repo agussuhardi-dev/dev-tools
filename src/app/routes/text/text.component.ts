@@ -6,13 +6,10 @@ import { PageHeaderComponent } from '@shared';
   templateUrl: './text.component.html',
   styleUrl: './text.component.scss',
   standalone: true,
-  imports: [PageHeaderComponent]
+  imports: [PageHeaderComponent],
 })
 export class TextTextComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

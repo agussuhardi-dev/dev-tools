@@ -6,13 +6,10 @@ import { PageHeaderComponent } from '@shared';
   templateUrl: './certificate.component.html',
   styleUrl: './certificate.component.scss',
   standalone: true,
-  imports: [PageHeaderComponent]
+  imports: [PageHeaderComponent],
 })
 export class EncodersDecodersCertificateComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
