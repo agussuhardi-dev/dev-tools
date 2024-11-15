@@ -59,25 +59,6 @@ mat-card-content {
   font-size: 12px;
 }
 
-/* Customize scrollbar */
-.card-list::-webkit-scrollbar {
-  height: 6px;
-}
-
-.card-list::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.card-list::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 3px;
-}
-
-.card-list::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* For smaller screens, allow wrapping */
 @media (max-width: 768px) {
   .card-list {
     flex-wrap: wrap;
@@ -87,4 +68,11 @@ mat-card-content {
   mat-card {
     margin: 10px;
   }
+}
+
+.flying-insect {
+  position: fixed;
+  font-size: 48px;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
 }
