@@ -2,7 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .card-list {
@@ -91,11 +95,19 @@ mat-icon {
 }
 
 @keyframes flapLeft {
-  from { transform: rotateY(0deg) rotateX(0deg); }
-  to { transform: rotateY(60deg) rotateX(30deg); }
+  from {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  to {
+    transform: rotateY(60deg) rotateX(30deg);
+  }
 }
 
 @keyframes flapRight {
-  from { transform: rotateY(0deg) rotateX(0deg); }
-  to { transform: rotateY(-60deg) rotateX(30deg); }
+  from {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  to {
+    transform: rotateY(-60deg) rotateX(30deg);
+  }
 }
