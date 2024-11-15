@@ -10,5 +10,9 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <div class="flying-insect" *ngIf="showFlyingInsect" [style.left.px]="insectPosition.x" [style.top.px]="insectPosition.y">🐝</div>
+  <div class="bee" *ngIf="showFlyingInsect" [ngStyle]="beeStyle" [class.resting]="isResting">
+    <div class="body">🐝</div>
+    <div class="wing left"></div>
+    <div class="wing right"></div>
+  </div>
 </div>

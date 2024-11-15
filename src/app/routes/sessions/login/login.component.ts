@@ -1,4 +1,4 @@
-import { Component, HostListener, inject, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,26 +22,27 @@ import { AuthService } from '@core/authentication';
   ],
   animations: [
     trigger('cardAnimation', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(50px)' }),
-        animate('300ms', style({ opacity: 1, transform: 'translateY(0)' })),
-      ]),
-    ]),
-    trigger('flyingAnimal', [
-      transition(':enter', [
-        animate('10s', keyframes([
-          style({ transform: 'translateX(-100%) translateY(100px) scale(0.5)', offset: 0 }),
-          style({ transform: 'translateX(50%) translateY(50px) scale(1)', offset: 0.4 }),
-          style({ transform: 'translateX(75%) translateY(100px) scale(0.8)', offset: 0.7 }),
-          style({ transform: 'translateX(100%) translateY(50px) scale(0.5)', offset: 1 }),
-        ])),
+      transition('* => *', [
+        query(':enter', [
+          style({ opacity: 0, transform: 'translateY(-15px)' }),
+          stagger('50ms', [
+            animate('250ms ease-out', style({ opacity: 1, transform: 'translateY(0px)' })),
+          ]),
+        ], { optional: true }),
       ]),
     ]),
   ],
 })
-export class LoginComponent  implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   showFlyingInsect = true;
-  insectPosition = { x: 0, y: 0 };
+  beeStyle: Record<string, string> = {};
+  isResting = false;
+  private animationFrameId: number | null = null;
+  private posX = 0;
+  private posY = 0;
+  private velX = 2;
+  private velY = 1;
+  private restTimeout: any;
 
   options = [
     { value: 'devtools', viewValue: 'DevTools', route: '/main', icon: 'build', color: '#4CAF50' },
@@ -53,7 +54,16 @@ export class LoginComponent  implements OnInit {
   constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit() {
-    this.moveInsect(); // Set initial random position
+    this.moveBee();
+  }
+
+  ngOnDestroy() {
+    if (this.animationFrameId !== null) {
+      cancelAnimationFrame(this.animationFrameId);
+    }
+    if (this.restTimeout) {
+      clearTimeout(this.restTimeout);
+    }
   }
 
   onCardClick(option: any) {
@@ -77,28 +87,44 @@ export class LoginComponent  implements OnInit {
       });
   }
 
-  moveInsect() {
-    const maxX = window.innerWidth - 48; // 48 is the insect's font size
-    const maxY = window.innerHeight - 48;
-    this.insectPosition = {
-      x: Math.random() * maxX,
-      y: Math.random() * maxY
-    };
-  }
+  private moveBee() {
+    if (!this.isResting) {
+      this.posX += this.velX;
+      this.posY += this.velY;
 
-  @HostListener('document:mousemove', ['$event'])
-  onMouseMove(event: MouseEvent) {
-    const insectElement = document.querySelector('.flying-insect') as HTMLElement;
-    if (insectElement) {
-      const rect = insectElement.getBoundingClientRect();
-      if (
-        event.clientX >= rect.left &&
-        event.clientX <= rect.right &&
-        event.clientY >= rect.top &&
-        event.clientY <= rect.bottom
-      ) {
-        this.moveInsect();
+      // Bounce off the edges
+      if (this.posX <= 0 || this.posX >= window.innerWidth - 48) {
+        this.velX = -this.velX;
+      }
+      if (this.posY <= 0 || this.posY >= window.innerHeight - 48) {
+        this.velY = -this.velY;
+      }
+
+      // Add some randomness to the movement
+      this.velX += (Math.random() - 0.5) * 0.5;
+      this.velY += (Math.random() - 0.5) * 0.5;
+
+      // Clamp velocity
+      this.velX = Math.max(Math.min(this.velX, 5), -5);
+      this.velY = Math.max(Math.min(this.velY, 3), -3);
+
+      this.beeStyle = {
+        transform: `translate(${this.posX}px, ${this.posY}px)`,
+      };
+
+      // Randomly decide to rest
+      if (Math.random() < 0.005) { // 0.5% chance to rest each frame
+        this.isResting = true;
+        this.beeStyle['transition'] = 'all 0.5s ease-out';
+        this.beeStyle['transform'] += ' scale(1.2)'; // Bee gets slightly bigger when resting
+        this.restTimeout = setTimeout(() => {
+          this.isResting = false;
+          delete this.beeStyle['transition'];
+          this.beeStyle['transform'] = this.beeStyle['transform'].replace(' scale(1.2)', '');
+        }, 2000 + Math.random() * 3000); // Rest for 2-5 seconds
       }
     }
+
+    this.animationFrameId = requestAnimationFrame(() => this.moveBee());
   }
 }
