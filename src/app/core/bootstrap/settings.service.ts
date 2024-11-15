@@ -71,13 +71,17 @@ export class SettingsService {
     this.htmlElement.dir = this.dir.value;
   }
 
-  setTheme() {
-    this.themeColor = this.getThemeColor();
+  setTheme(theme?: any) {
+    this.themeColor = theme || this.getThemeColor();
 
     if (this.themeColor === 'dark') {
       this.htmlElement.classList.add('theme-dark');
     } else {
       this.htmlElement.classList.remove('theme-dark');
     }
+
+    this.options.theme = this.themeColor;
+    this.store.set(this.key, this.options);
+    this.notify$.next(this.options);
   }
 }
