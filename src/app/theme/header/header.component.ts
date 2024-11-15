@@ -9,7 +9,7 @@ import { GithubButtonComponent } from '../widgets/github.component';
 import { NotificationComponent } from '../widgets/notification.component';
 import { TranslateComponent } from '../widgets/translate.component';
 import { UserComponent } from '../widgets/user.component';
-import { SettingsService } from '@core';
+import { AuthService, SettingsService } from '@core';
 
 @Component({
   selector: 'app-header',
@@ -38,7 +38,7 @@ export class HeaderComponent {
   @Output() toggleSidenav = new EventEmitter<void>();
   @Output() toggleSidenavNotice = new EventEmitter<void>();
 
-  constructor(public settings: SettingsService) {}
+  constructor(public settings: SettingsService, private authService: AuthService) {}
 
   toggleFullscreen() {
     if (screenfull.isEnabled) {
@@ -49,6 +49,13 @@ export class HeaderComponent {
   toggleTheme() {
     const newTheme = this.settings.getThemeColor() === 'light' ? 'dark' : 'light';
     this.settings.setTheme(newTheme);
+  }
+
+  logout() {
+    this.authService.logout().subscribe(() => {
+      // Navigate to login page or perform any other post-logout actions
+      window.location.href = '/login';
+    });
   }
 
 }

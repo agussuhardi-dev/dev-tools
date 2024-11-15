@@ -1,0 +1,90 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 90vw;
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+mat-card {
+  flex: 0 0 auto;
+  width: 180px;
+  height: 180px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+}
+
+mat-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+mat-icon {
+  font-size: 48px;
+  height: 48px;
+  width: 48px;
+  margin-bottom: 10px;
+}
+
+mat-card-title {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+mat-card-content {
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Customize scrollbar */
+.card-list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.card-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.card-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.card-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* For smaller screens, allow wrapping */
+@media (max-width: 768px) {
+  .card-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  mat-card {
+    margin: 10px;
+  }
+}

@@ -31,4 +31,8 @@
   <button mat-icon-button class="hide-small" (click)="toggleTheme()">
     <mat-icon>{{ settings.getThemeColor() === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
   </button>
+
+  <button mat-icon-button class="hide-small" (click)="logout()" matTooltip="Logout">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
 </mat-toolbar>

@@ -1,14 +1,10 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { Router, RouterLink } from '@angular/router';
-import { MtxButtonModule } from '@ng-matero/extensions/button';
-import { TranslateModule } from '@ngx-translate/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
+import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 import { filter } from 'rxjs/operators';
 
 import { AuthService } from '@core/authentication';
@@ -16,66 +12,58 @@ import { AuthService } from '@core/authentication';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrls: ['./login.component.scss'],
   standalone: true,
   imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    RouterLink,
-    MatButtonModule,
+    CommonModule,
     MatCardModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MtxButtonModule,
-    TranslateModule,
+    MatButtonModule,
+    MatIconModule,
   ],
+  animations: [
+    trigger('cardAnimation', [
+      transition('* => *', [
+        query(':enter', [
+          style({ opacity: 0, transform: 'translateY(-15px)' }),
+          stagger('100ms', [
+            animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+          ])
+        ], { optional: true })
+      ])
+    ])
+  ]
 })
 export class LoginComponent {
-  isSubmitting = false;
-  private readonly fb = inject(FormBuilder);
-  loginForm = this.fb.nonNullable.group({
-    username: ['ng-matero', [Validators.required]],
-    password: ['ng-matero', [Validators.required]],
-    rememberMe: [false],
-  });
-  private readonly router = inject(Router);
+
   private readonly auth = inject(AuthService);
 
-  get username() {
-    return this.loginForm.get('username')!;
+  options = [
+    { value: 'devtools', viewValue: 'DevTools', route: '/main', icon: 'build', color: '#4CAF50' },
+    { value: 'rest-simulator', viewValue: 'Rest Simulator', route: '/rest-simulator', icon: 'http', color: '#2196F3' },
+    { value: 'iso8583-simulator', viewValue: 'ISO8583 Simulator', route: 'https://github.com/agussuhardi-dev/iso8583-server-simulator', icon: 'memory', color: '#FF9800' },
+    { value: 'profile', viewValue: 'Profile', route: '/profile', icon: 'person', color: '#E91E63' },
+  ];
+
+  constructor(private router: Router) {}
+
+  onCardClick(option: any) {
+    if (option.value === 'devtools') {
+      this.routeDevTools();
+    } else if (option.value === 'iso8583-simulator') {
+      window.open(option.route, '_blank');
+    } else {
+      this.router.navigate([option.route]);
+    }
   }
 
-  get password() {
-    return this.loginForm.get('password')!;
-  }
-
-  get rememberMe() {
-    return this.loginForm.get('rememberMe')!;
-  }
-
-  login() {
-    this.isSubmitting = true;
-
+  routeDevTools() {
     this.auth
-      .login(this.username.value, this.password.value, this.rememberMe.value)
+      .login('DevTools', 'random', true)
       .pipe(filter(authenticated => authenticated))
       .subscribe({
         next: () => {
           this.router.navigateByUrl('/');
-        },
-        error: (errorRes: HttpErrorResponse) => {
-          if (errorRes.status === 422) {
-            const form = this.loginForm;
-            const errors = errorRes.error.errors;
-            Object.keys(errors).forEach(key => {
-              form.get(key === 'email' ? 'username' : key)?.setErrors({
-                remote: errors[key][0],
-              });
-            });
-          }
-          this.isSubmitting = false;
-        },
+        }
       });
   }
 }
