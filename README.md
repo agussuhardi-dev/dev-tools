@@ -1,7 +1,11 @@
 ```bash
 ng serve
-#npm run electron-build
 ```
+<!--  
+run electron
+
+npm run electron-build
+-->
 
 
 
